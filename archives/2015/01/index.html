@@ -43,11 +43,15 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
+                                    <a href="/2015/01/30/idt/">中断描述符idt</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/hello-world/">Hello World</a>
+                                    <a href="/2015/01/30/pic/">8259a pic原理收集</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
                                 </li>
                                 
                                 </div>
@@ -67,6 +71,11 @@
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
+                                    <small>3</small>
+                                </li>
                                 
                                 </div>
                             </ul>
@@ -95,6 +104,11 @@
                                     <small>0</small>
                                 </li>
                                 
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
+                                    <small>2</small>
+                                </li>
+                                
                                 </div>
                             </ul>
                         </div>
@@ -110,15 +124,21 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
+                    <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
                 
-                    <a  data-pjax href="/2015/01/30/hello-world/">Hello World</a>
+                    <a  data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
                 
+                    <a  data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+                
+                
+                    <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
                 
                 
                     <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
                 
                     <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
+                
+                    <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
                 
                 <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
             </div>
@@ -161,12 +181,75 @@
             <div class="tag-tile">
                 
                 
+                <a data-pjax href='/tags/操作系统/'>操作系统</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-30T04:05:01.000Z"
+                      itemprop="datePublished">1月 30 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                1. IDT
+​在实地址模式中，CPU 把内存中从0 开始的1K 字节作为一个中断向量表。表中的每个表项占4 个字节，由两个字节的段基址和两个字节的偏移量组成，这样构成的地址便是相应中断处理程序的入口地址。在保护模式下，中断向量表中的表项由8 个字节组成，如图3.2 所示，中断向量表也改叫做中断描述符表IDT（Interrupt Descriptor Table）。其中的每个表项叫做一个门描述符（Gate Descriptor），“门”
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/操作系统/'>操作系统</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-30T03:03:42.000Z"
+                      itemprop="datePublished">1月 30 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                8259a pic 原理收集
+最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
+8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt Controller)进行控制，并传递
+                
+            </p>
+            
+        </section>
+    </article>
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
                 <a data-pjax href='/tags/java/'>java</a>
                 
                 
                 <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
             </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
+            <h1 class="post-title"><a data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
             </h1>
 
             <div class="post-meta">
@@ -181,34 +264,6 @@
                 
 java各类型占用的内存
 Primitive Type       Memory Required(bytes)boolean                 1byte                        1short                       2char                        2int                           4float               
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/hello-world/">Hello World</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T01:00:26.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick Start
-Create a new 
                 
             </p>
             
