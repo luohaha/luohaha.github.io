@@ -175,7 +175,7 @@
         <section class="post-content">
             <ol>
 <li><h2 id="java各类型占用的内存">java各类型占用的内存</h2>
-Primitive Type | Memory Required(bytes)<br>—— | ———-<br>boolean|1<br>byte |1<br>short | 2<br>char|2<br>int | 4<br>float| 4<br>long | 8<br>double | 8</li>
+Primitive Type       Memory Required(bytes)<br>boolean                 1<br>byte                        1<br>short                       2<br>char                        2<br>int                           4<br>float                        4<br>long                        8<br>double                    8</li>
 <li><h2 id="64位虚拟机下java对象与数组的内存分配">64位虚拟机下java对象与数组的内存分配</h2>
 <strong>Object reference(对象引用,因为地址是64位的) : 8bytes</strong><br><em>64位虚拟机下地址用64位标记,所以对象引用需要8bytes, 当对象中内嵌对象时会出现这种对象引用</em><br><strong>Array:24bytes+memory for each array entry(数组后通常要加8bytes的引用)</strong><br><em>因为也是需要地址来指向数据真正存放的位置</em><br><strong>Object(对象):16bytes+memory for each+8(如果有内嵌的类)</strong><br><em>对象需要附加的16bytes</em><br><strong>Padding: 对齐8bytes(64位)</strong><br><em>别忘了对齐</em> </li>
 </ol>
