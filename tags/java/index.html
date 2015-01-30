@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: tmp | Luo&#39;s blog</title>
+  <title>Tag: java | Luo&#39;s blog</title>
   <meta name="description" content="分享与积累" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/my-new-post/">my new post</a>
+                                    <a href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -86,8 +86,13 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
+                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
                                     <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
+                                    <small>0</small>
                                 </li>
                                 
                                 </div>
@@ -105,11 +110,13 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2015/01/30/my-new-post/">my new post</a>
+                    <a  data-pjax href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
                 
                     <a  data-pjax href="/2015/01/30/hello-world/">Hello World</a>
                 
                 
+                
+                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
                 
                     <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
                 
@@ -154,12 +161,12 @@
             <div class="tag-tile">
                 
                 
-                <a data-pjax href='/tags/tmp/'>tmp</a>
+                <a data-pjax href='/tags/java/'>java</a>
                 
                 
                 <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
             </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/my-new-post/">my new post</a>
+            <h1 class="post-title"><a data-pjax href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
             </h1>
 
             <div class="post-meta">
@@ -172,6 +179,10 @@
             <p>
                 
                 
+java各类型占用的内存
+Primitive Type | Memory Required(bytes)—— | ———-boolean|1byte |1short | 2char|2int | 4float| 4long | 8double | 8
+64位虚拟机下java对象与数组的内存分配
+Object reference(对象引用,因为地址是64位的) : 8bytes64位虚拟机下地址用64位标记,所以对象引用需要8bytes
                 
             </p>
             

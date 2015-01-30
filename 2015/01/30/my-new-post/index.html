@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>my new post | Luo&#39;s blog</title>
+  <title>看看java是如何分配内存的 | Luo&#39;s blog</title>
   <meta name="description" content="分享与积累" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/my-new-post/">my new post</a>
+                                    <a href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
                                 </li>
                                 
                                 <li class="search-archive-li mp-pjax">
@@ -86,8 +86,13 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
+                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
                                     <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
+                                    <small>0</small>
                                 </li>
                                 
                                 </div>
@@ -105,11 +110,13 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
-                    <a  data-pjax href="/2015/01/30/my-new-post/">my new post</a>
+                    <a  data-pjax href="/2015/01/30/my-new-post/">看看java是如何分配内存的</a>
                 
                     <a  data-pjax href="/2015/01/30/hello-world/">Hello World</a>
                 
                 
+                
+                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
                 
                     <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
                 
@@ -123,7 +130,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">my new post</a></li>
+                        <li id="navbar-title"><a href="#">看看java是如何分配内存的</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -152,11 +159,11 @@
                   <div class="tag-tile">
                       
                       
-                      <a data-pjax href='/tags/tmp/' style='color:#D5D5D5'>tmp</a>
+                      <a data-pjax href='/tags/java/' style='color:#D5D5D5'>java</a>
                       
                       
                   </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">my new post</h1>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">看看java是如何分配内存的</h1>
 
                     <div class="post-meta">
                         Post on<span class="fa fa-clock-o"></span>
@@ -166,7 +173,13 @@
     </span>
 
         <section class="post-content">
-            
+            <ol>
+<li><h2 id="java各类型占用的内存">java各类型占用的内存</h2>
+Primitive Type | Memory Required(bytes)<br>—— | ———-<br>boolean|1<br>byte |1<br>short | 2<br>char|2<br>int | 4<br>float| 4<br>long | 8<br>double | 8</li>
+<li><h2 id="64位虚拟机下java对象与数组的内存分配">64位虚拟机下java对象与数组的内存分配</h2>
+<strong>Object reference(对象引用,因为地址是64位的) : 8bytes</strong><br><em>64位虚拟机下地址用64位标记,所以对象引用需要8bytes, 当对象中内嵌对象时会出现这种对象引用</em><br><strong>Array:24bytes+memory for each array entry(数组后通常要加8bytes的引用)</strong><br><em>因为也是需要地址来指向数据真正存放的位置</em><br><strong>Object(对象):16bytes+memory for each+8(如果有内嵌的类)</strong><br><em>对象需要附加的16bytes</em><br><strong>Padding: 对齐8bytes(64位)</strong><br><em>别忘了对齐</em> </li>
+</ol>
+
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
