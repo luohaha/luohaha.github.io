@@ -1,213 +1,121 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="utf-8">
+  
   <title>一张grub multiboot的说明书 | Luo&#39;s blog</title>
-  <meta name="description" content="分享与积累" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/component.css" />
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="Luo's blog">
-  <script src="http://static.duoshuo.com/embed.js"></script>
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍
+Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
+OS image format
+1. multiboot header的布局
+      multiboot头部的布局必须遵守一下规范:  
+偏移量 类型 域名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一张grub multiboot的说明书">
+<meta property="og:url" content="http://yoursite.com/2015/01/31/2015-01-31-multiboot/">
+<meta property="og:site_name" content="Luo's blog">
+<meta property="og:description" content="介绍
+Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
+OS image format
+1. multiboot header的布局
+      multiboot头部的布局必须遵守一下规范:  
+偏移量 类型 域名">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一张grub multiboot的说明书">
+<meta name="twitter:description" content="介绍
+Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
+OS image format
+1. multiboot header的布局
+      multiboot头部的布局必须遵守一下规范:  
+偏移量 类型 域名">
 
   
+    <link rel="alternative" href="/atom.xml" title="Luo&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
 </head>
 <body>
-<div class="container">
-    <div class="mp-pusher" id="mp-pusher">
-        <i id="scroll-up" class="fa fa-angle-up"></i>
-        <nav id="mp-menu" class="mp-menu">
-            <div class="mp-level">
-                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
-                        Home</h2></a>
-                <ul class="first-level">
-                    <li>
-                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Archive</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-archive"></i>
-                                Archive</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-archive" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/idt/">中断描述符idt</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/pic/">8259a pic原理收集</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Luo&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">分享与积累</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-2015-01-31-multiboot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/31/2015-01-31-multiboot/" class="article-date">
+  <time datetime="2015-01-31T03:51:55.000Z" itemprop="datePublished">1月 31 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
 
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-category" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-category-li mp-pjax">
-                                    <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>5</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-tag" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
-                                    <small>1</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
-                                    <small>0</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>4</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
-                </ul>
-
-            </div>
-        </nav>
-        <div id="pjax">
-            <div class="pjax-hidden" style="display: none">
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                
-                    <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
-                
-                    <a  data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
-                
-                    <a  data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                
-                
-                    <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
-                
-                
-                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
-                
-                    <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
-                
-                    <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
-                
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
-            </div>
-            <nav class="nexus">
-                <li  style="border-left: 1px solid #c6d0da;">
-                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li ><a id="nexus-back" data-pjax href="/">Luo&#39;s blog</a></li>
-                
-                <div id="nav-container">
-                    <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">一张grub multiboot的说明书</a></li>
-                        <li id="navbar-toc" style="border-left: none">
-                            <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
-                            </a>
-                            <div class="hidden-box">
-                                <ul id="toc"></ul>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-                
-            </nav>
-
-            <div class="scroller">
-            <div class="scroller-inner">
-
-
-<!-- -->
-<!--<body class="post-template">-->
-<!---->
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一张grub multiboot的说明书
+    </h1>
   
 
-<main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                      
-                      <a data-pjax href='/tags/操作系统/' style='color:#D5D5D5'>操作系统</a>
-                      
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">一张grub multiboot的说明书</h1>
-
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2015-01-31T03:51:55.000Z"
-                              itemprop="datePublished">1月 31 2015</time>
-                    </div>
-    </span>
-
-        <section class="post-content">
-            <h1 id="介绍">介绍</h1>
-<pre><code>   Multiboot 定义了一个从boot loader到operating <span class="built_in">system</span>的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
-</code></pre><h1 id="OS_image_format">OS image format</h1>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="介绍">介绍</h1>
+<p>Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     </p>
+<h1 id="OS_image_format">OS image format</h1>
 <h2 id="1-_multiboot_header的布局">1. multiboot header的布局</h2>
 <pre><code>      <span class="attribute">multiboot头部的布局必须遵守一下规范</span>: <span class="string"> </span>
 </code></pre><p>偏移量 类型 域名 备注<br>0  u32  magic  必需<br>4  u32  flags  必需<br>8  u32  checksum  必需<br>12  u32  header_addr  如果flags[16]被置位<br>16  u32  load_addr  如果flags[16]被置位<br>20  u32  load_end_addr  如果flags[16]被置位<br>24  u32  bss_end_addr  如果flags[16]被置位<br>28  u32  entry_addr  如果flags[16]被置位<br>32  u32  mode_type  如果flags[2]被置位<br>36  u32  width  如果flags[2]被置位<br>40  u32  height  如果flags[2]被置位<br>44  u32  depth  如果flags[2]被置位    </p>
@@ -237,30 +145,9 @@
 </li>
 </ul>
 <h3 id="在实际编写操作系统的过程中,boot的程序的汇编代码如下:"><strong>在实际编写操作系统的过程中,boot的程序的汇编代码如下:</strong></h3>
-<p><code>;魔数magic  
-MultiBoot_Magic EQU 0x1BADB002 ;这个是grub可以识别的规范  
-;flags可以指出引导程序支持的特性  
-MultiBoot_Flags EQU 0x00000003 ;第0位和1位设置为1是为了4kb对齐和men*_域包含可用内存信息  
-;magic，flags和checksum的和必须为0  
-MultiBoot_Checksum EQU -(MultiBoot_Magic+MultiBoot_Flags)  
-[BITS 32]      ;代码以32位编译  
-section .text  ;代码段开始的地方  
-    dd MultiBoot_Magic
-    dd MultiBoot_Flags
-    dd MultiBoot_Checksum
-[GLOBAL start]        ;外部可见的内核代码开始入口  
-[GLOBAL glb_mboot_ptr];struct multiboot *变量  
-[EXTERN main]   ;声明内核c代码的入口函数  
-start:  
-    cli        ;关中断  
-    mov esp,STACK_TOP;吧esp的值保存的栈顶  
-    mov ebp,0  
-    and esp,0FFFFFFF0H;按16字节对齐  
-    mov [glb_mboot_ptr],ebx  
-    call main  
-stop:  
-    hlt  
-    jmp stop</code>  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;魔数magic  </span></div><div class="line">MultiBoot_Magic <span class="pseudo">EQU</span> <span class="number">0x1BADB002</span> <span class="comment">;这个是grub可以识别的规范  </span></div><div class="line"><span class="comment">;flags可以指出引导程序支持的特性  </span></div><div class="line">MultiBoot_Flags <span class="pseudo">EQU</span> <span class="number">0x00000003</span> <span class="comment">;第0位和1位设置为1是为了4kb对齐和men*_域包含可用内存信息  </span></div><div class="line"><span class="comment">;magic，flags和checksum的和必须为0  </span></div><div class="line">MultiBoot_Checksum <span class="pseudo">EQU</span> -(MultiBoot_Magic+MultiBoot_Flags)  </div><div class="line">[<span class="built_in">BITS</span> <span class="number">32</span>]      <span class="comment">;代码以32位编译  </span></div><div class="line"><span class="built_in">section</span> <span class="string">.text</span>  <span class="comment">;代码段开始的地方  </span></div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Magic</div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Flags</div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Checksum</div><div class="line">[<span class="built_in">GLOBAL</span> start]        <span class="comment">;外部可见的内核代码开始入口  </span></div><div class="line">[<span class="built_in">GLOBAL</span> glb_mboot_ptr]<span class="comment">;struct multiboot *变量  </span></div><div class="line">[<span class="built_in">EXTERN</span> main]   <span class="comment">;声明内核c代码的入口函数  </span></div><div class="line"><span class="label">start:</span>  </div><div class="line">	<span class="keyword">cli</span>		<span class="comment">;关中断  </span></div><div class="line">	<span class="keyword">mov</span> <span class="literal">esp</span>,STACK_TOP<span class="comment">;吧esp的值保存的栈顶  </span></div><div class="line">	<span class="keyword">mov</span> <span class="literal">ebp</span>,<span class="number">0</span>  </div><div class="line">	<span class="keyword">and</span> <span class="literal">esp</span>,<span class="number">0FFFFFFF0H</span><span class="comment">;按16字节对齐  </span></div><div class="line">	<span class="keyword">mov</span> [glb_mboot_ptr],<span class="number">ebx</span>  </div><div class="line">	<span class="keyword">call</span> main  </div><div class="line"><span class="label">stop:</span>  </div><div class="line">	<span class="keyword">hlt</span>  </div><div class="line">	<span class="keyword">jmp</span> stop</div></pre></td></tr></table></figure>
+
+
 <h3 id="寄存器状态"><strong>寄存器状态</strong></h3>
 <ul>
 <li><p>EAX<br>必须包含魔数0x2BADB002；这个值指出操作系统是被一个符合Multiboot规范的引导程序载入的（这样就算是另一种引导程序也可以引导这个操作系统）。</p>
@@ -285,11 +172,8 @@ stop:
 </li>
 </ul>
 <h2 id="2-_引导信息格式">2. 引导信息格式</h2>
-<pre><code>    在进入操作系统时，<span class="class">EBX</span>寄存器包含<span class="class">Multiboot</span>信息数据结构的物理地址，引导程序通过它将重要的引导信息传递给操作系统。操作系统可以按自己的需要使用或者忽略任何部分；所有的引导程序传递的信息只是建议性的。   
-    *这些信息在以后的开发中会用到*  
-    <span class="class">Multiboot</span>信息结构（就目前为止定义的）的格式如下：
-
-         +---------------------------+
+<p>  在进入操作系统时，EBX寄存器包含Multiboot信息数据结构的物理地址，引导程序通过它将重要的引导信息传递给操作系统。操作系统可以按自己的需要使用,或者忽略任何部分；所有的引导程序传递的信息只是建议性的。<br>        <em>这些信息在以后的开发中会用到</em><br>        Multiboot信息结构（就目前为止定义的）的格式如下：</p>
+<pre><code>         +---------------------------+
  <span class="number">0</span>       <span class="localvars">| flags                          |</span>    (必需)
          +---------------------------+
  <span class="number">4</span>       <span class="localvars">| mem_lower             |</span>    (如果flags[<span class="number">0</span>]被置位则出现)
@@ -322,98 +206,220 @@ stop:
  <span class="number">84</span>      <span class="localvars">| vbe_interface_off     |</span>  
  <span class="number">86</span>      <span class="localvars">| vbe_interface_len    |</span>  
          +-----------------------------+   
-</code></pre><p><code>typedef struct multiboot_t {
-    uint32_t flags;            // Multiboot 的版本信息
-    uint32_t mem_lower;
-    uint32_t mem_upper;
-    uint32_t boot_device;        // 指出引导程序从哪个BIOS磁盘设备载入的OS映像
-    uint32_t cmdline;        // 内核命令行
-    uint32_t mods_count;        // boot 模块列表
-    uint32_t mods_addr;
-    uint32_t num;
-    uint32_t size;
-    uint32_t addr;
-    uint32_t shndx;
-    uint32_t mmap_length;        
-    uint32_t mmap_addr;
-    uint32_t drives_length;     // 指出第一个驱动器结构的物理地址    
-    uint32_t drives_addr;         // 指出第一个驱动器这个结构的大小
-    uint32_t config_table;         // ROM 配置表
-    uint32_t boot_loader_name;     // boot loader 的名字
-    uint32_t apm_table;             // APM 表
-    uint32_t vbe_control_info;
-    uint32_t vbe_mode_info;
-    uint32_t vbe_mode;
-    uint32_t vbe_interface_seg;
-    uint32_t vbe_interface_off;
-    uint32_t vbe_interface_len;  
-} __attribute__((packed)) multiboot_t;</code></p>
-
-        </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
-            
-            <a class="share-button" data-original-title title>Share this Post</a>
-            
-            <a data-pjax class="older-posts" href="/2015/01/31/2015-01-31-cr-register/">Next Post →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">typedef struct multiboot_t {</div><div class="line">	uint32_t flags;			// Multiboot 的版本信息</div><div class="line">	uint32_t mem_lower;</div><div class="line">	uint32_t mem_upper;</div><div class="line">	uint32_t boot_device;		// 指出引导程序从哪个BIOS磁盘设备载入的OS映像</div><div class="line">	uint32_t cmdline;		// 内核命令行</div><div class="line">	uint32_t mods_count;		// boot 模块列表</div><div class="line">	uint32_t mods_addr;</div><div class="line">	uint32_t num;</div><div class="line">	uint32_t size;</div><div class="line">	uint32_t addr;</div><div class="line">	uint32_t shndx;</div><div class="line">	uint32_t mmap_length;		</div><div class="line">	uint32_t mmap_addr;</div><div class="line">	uint32_t drives_length; 	// 指出第一个驱动器结构的物理地址	</div><div class="line">	uint32_t drives_addr; 		// 指出第一个驱动器这个结构的大小</div><div class="line">	uint32_t config_table; 		// ROM 配置表</div><div class="line">	uint32_t boot_loader_name; 	// boot loader 的名字</div><div class="line">	uint32_t apm_table; 	    	// APM 表</div><div class="line">	uint32_t vbe_control_info;</div><div class="line">	uint32_t vbe_mode_info;</div><div class="line">	uint32_t vbe_mode;</div><div class="line">	uint32_t vbe_interface_seg;</div><div class="line">	uint32_t vbe_interface_off;</div><div class="line">	uint32_t vbe_interface_len;  </div><div class="line">} __attribute__((packed)) multiboot_t;</div></pre></td></tr></table></figure>
 
 
-    </article>
-</main>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/31/2015-01-31-multiboot/" data-id="ymgyh078kmd3qgbf" class="article-share-link" data-share="baidu">分享到</a>
+      
 
+      
 
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
   
-<footer class="site-footer">
     
-    <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; Luo's blog 2014</section>
-        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
-    </div>
-</footer>
-</div>
-</div><!-- /scroller -->
-
-</div><!-- /pusher -->
-</div><!-- /container -->
-</div>
-
-<!-- Easter eggs -->
-
-<div class="egg animated">
-    <a id="close-button" href="#">X</a>
-    <div class="block">
-        <div class="loading">
-            <span class="ball1"></span>
-            <span class="ball2"></span>
-        </div>
-    </div>
-</div>
+<nav id="article-nav">
   
-<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) {
-        var script = document.createElement('script');
-        script.src = "/js/jquery.min.js";
-        document.body.appendChild(script);
-    }
+  
+    <a href="/2015/01/31/2015-01-31-cr-register/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">x86的控制寄存器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 15.00px;">java</a><a href="/tags/tmp/" style="font-size: 10.00px;">tmp</a><a href="/tags/操作系统/" style="font-size: 20.00px;">操作系统</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/idt/">中断描述符idt</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/pic/">8259a pic原理收集</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://becool.sinaapp.com" target="_blank">football news</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Yixin Luo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
-<script type="text/javascript" src="/js/lib.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
 
-
-
-
+</div>
 </body>
 </html>

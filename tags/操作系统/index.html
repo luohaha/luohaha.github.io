@@ -1,375 +1,581 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="utf-8">
+  
   <title>Tag: 操作系统 | Luo&#39;s blog</title>
-  <meta name="description" content="分享与积累" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/component.css" />
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="Luo's blog">
-  <script src="http://static.duoshuo.com/embed.js"></script>
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Luo's blog">
+<meta property="og:url" content="http://yoursite.com/tags/操作系统/">
+<meta property="og:site_name" content="Luo's blog">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luo's blog">
+<meta name="twitter:description">
 
   
+    <link rel="alternative" href="/atom.xml" title="Luo&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
 </head>
 <body>
-<div class="container">
-    <div class="mp-pusher" id="mp-pusher">
-        <i id="scroll-up" class="fa fa-angle-up"></i>
-        <nav id="mp-menu" class="mp-menu">
-            <div class="mp-level">
-                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
-                        Home</h2></a>
-                <ul class="first-level">
-                    <li>
-                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Archive</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-archive"></i>
-                                Archive</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-archive" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/idt/">中断描述符idt</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/pic/">8259a pic原理收集</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
-
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-category" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-category-li mp-pjax">
-                                    <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>5</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-tag" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
-                                    <small>1</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
-                                    <small>0</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>4</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
-                </ul>
-
-            </div>
-        </nav>
-        <div id="pjax">
-            <div class="pjax-hidden" style="display: none">
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                
-                    <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
-                
-                    <a  data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
-                
-                    <a  data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                
-                
-                    <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
-                
-                
-                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
-                
-                    <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
-                
-                    <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
-                
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
-            </div>
-            <nav class="nexus">
-                <li  style="border-left: 1px solid #c6d0da;">
-                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li ><a id="nexus-back" data-pjax href="/">Luo&#39;s blog</a></li>
-                
-                <div id="nav-container">
-                    <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
-                        <li id="navbar-toc" style="border-left: none">
-                            <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
-                            </a>
-                            <div class="hidden-box">
-                                <ul id="toc"></ul>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-                
-            </nav>
-
-            <div class="scroller">
-            <div class="scroller-inner">
-
-
-<!-- -->
-<!--<body class="home-template">-->
-<!---->
-  
-<main class="content" role="main">
-
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-31T03:51:55.000Z"
-                      itemprop="datePublished">1月 31 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                介绍
-   Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
-OS image format
-1. multiboot header的布局
-      multiboot头部的布局必须遵守一下规范:  
-偏移量 类型 域名 备注0  u32  magic 
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-31T02:07:35.000Z"
-                      itemprop="datePublished">1月 31 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                x86的控制寄存器
-状态和控制寄存器组除了EFLAGS、EIP ，还有四个32位的控制寄存器，它们是CR0，CR1，CR2和CR3.  
-1. CR0
- 0位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置1，则保护模式启动，如果PE=0，则在实模式下运行。  
- 1 位是监控协处理位MP(Moniter coprocessor)，它与第3位一起决定：当TS=1时操作码WAIT是否产生一个“协处理器不
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T04:05:01.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                1. IDT
-​在实地址模式中，CPU 把内存中从0 开始的1K 字节作为一个中断向量表。表中的每个表项占4 个字节，由两个字节的段基址和两个字节的偏移量组成，这样构成的地址便是相应中断处理程序的入口地址。在保护模式下，中断向量表中的表项由8 个字节组成，如图3.2 所示，中断向量表也改叫做中断描述符表IDT（Interrupt Descriptor Table）。其中的每个表项叫做一个门描述符（Gate Descriptor），“门”
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T03:03:42.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                8259a pic 原理收集
-最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
-8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt Controller)进行控制，并传递
-                
-            </p>
-            
-        </section>
-    </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
-</main>
-
-
-  
-<footer class="site-footer">
-    
-    <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; Luo's blog 2014</section>
-        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Luo&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">分享与积累</a>
+        </h2>
+      
     </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-2015-01-31-multiboot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/31/2015-01-31-multiboot/" class="article-date">
+  <time datetime="2015-01-31T03:51:55.000Z" itemprop="datePublished">1月 31 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="介绍">介绍</h1>
+<p>Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     </p>
+<h1 id="OS_image_format">OS image format</h1>
+<h2 id="1-_multiboot_header的布局">1. multiboot header的布局</h2>
+<pre><code>      <span class="attribute">multiboot头部的布局必须遵守一下规范</span>: <span class="string"> </span>
+</code></pre><p>偏移量 类型 域名 备注<br>0  u32  magic  必需<br>4  u32  flags  必需<br>8  u32  checksum  必需<br>12  u32  header_addr  如果flags[16]被置位<br>16  u32  load_addr  如果flags[16]被置位<br>20  u32  load_end_addr  如果flags[16]被置位<br>24  u32  bss_end_addr  如果flags[16]被置位<br>28  u32  entry_addr  如果flags[16]被置位<br>32  u32  mode_type  如果flags[2]被置位<br>36  u32  width  如果flags[2]被置位<br>40  u32  height  如果flags[2]被置位<br>44  u32  depth  如果flags[2]被置位    </p>
+<h3 id="说明:"><strong>说明:</strong></h3>
+<ul>
+<li><p>magic:<br>magic域是标志头的魔数，它必须等于十六进制值0x1BADB002。</p>
+</li>
+<li><p>flags:<br>flags域指出OS映像需要引导程序提供或支持的特性。0-15位指出需求：如果引导程序发现某些值被设置但出于某种原因不理解或不能不能满足相应的需求，它必须告知用户并宣告引导失败。16-31位指出可选的特性：如果引导程序不能支持某些位，它可以简单的忽略它们并正常引导。自然，所有flags字中尚未定义的位必须被置为0。这样，flags域既可以用于版本控制也可以用于简单的特性选择。<br>如果设置了flags字中的0位，所有的引导模块将按页（4KB）边界对齐。有些操作系统能够在启动时将包含引导模块的页直接映射到一个分页的地址空间，因此需要引导模块是页对齐的。</p>
+</li>
+<li><p>如果设置了flags字中的1位，则必须通过Multiboot信息结构（参见引导信息格式）的mem<em>*域包括可用内存的信息。如果引导程序能够传递内存分布（mmap</em>*域）并且它确实存在，则也包括它。</p>
+</li>
+<li><p>如果设置了flags字中的2位，有关视频模式表（参见引导信息格式）的信息必须对内核有效。</p>
+</li>
+<li><p>如果设置了flags字中的16位，则Multiboot头中偏移量8-24的域有效，引导程序应该使用它们而不是实际可执行头中的域来计算将OS映象载入到那里。如果内核映象为ELF格式则不必提供这样的信息，但是如果映象是a.out格式或者其他什么格式的话就必须提供这些信息。兼容的引导程序必须既能够载入ELF格式的映象也能载入将载入地址信息嵌入Multiboot头中的映象；它们也可以直接支持其他的可执行格式，例如一个a.out的特殊变体，但这不是必须的。</p>
+</li>
+<li><p>checksum:<br>域checksum是一个32位的无符号值，当与其他的magic域（也就是magic和flags）相加时，结果必须是32位的无符号值0（即magic + flags + checksum = 0）。</p>
+</li>
+<li><p>header_addr<br>包含对应于Multiboot头的开始处的地址——这也是magic值的物理地址。这个域用来同步OS映象偏移量和物理内存之间的映射。</p>
+</li>
+<li><p>load_addr<br>包含text段开始处的物理地址。从OS映象文件中的多大偏移开始载入由头位置的偏移量定义，相减（header_addr - load_addr）。load_addr必须小于等于header_addr。</p>
+</li>
+<li><p>load_end_addr<br>包含data段结束处的物理地址。（load_end_addr - load_addr）指出了引导程序要载入多少数据。这暗示了text和data段必须在OS映象中连续；现有的a.out可执行格式满足这个条件。如果这个域为0，引导程序假定text和data段占据整个 OS 映象文件。</p>
+</li>
+<li><p>bss_end_addr<br>包含bss段结束处的物理地址。引导程序将这个区域初始化为0，并保留这个区域以免将引导模块和其他的于查系统相关的数据放到这里。如果这个域为0，引导程序假定没有bss段。</p>
+</li>
+<li><p>entry_addr<br>操作系统的入口点，引导程序最后将跳转到那里。 </p>
+</li>
+</ul>
+<h3 id="在实际编写操作系统的过程中,boot的程序的汇编代码如下:"><strong>在实际编写操作系统的过程中,boot的程序的汇编代码如下:</strong></h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">;魔数magic  </span></div><div class="line">MultiBoot_Magic <span class="pseudo">EQU</span> <span class="number">0x1BADB002</span> <span class="comment">;这个是grub可以识别的规范  </span></div><div class="line"><span class="comment">;flags可以指出引导程序支持的特性  </span></div><div class="line">MultiBoot_Flags <span class="pseudo">EQU</span> <span class="number">0x00000003</span> <span class="comment">;第0位和1位设置为1是为了4kb对齐和men*_域包含可用内存信息  </span></div><div class="line"><span class="comment">;magic，flags和checksum的和必须为0  </span></div><div class="line">MultiBoot_Checksum <span class="pseudo">EQU</span> -(MultiBoot_Magic+MultiBoot_Flags)  </div><div class="line">[<span class="built_in">BITS</span> <span class="number">32</span>]      <span class="comment">;代码以32位编译  </span></div><div class="line"><span class="built_in">section</span> <span class="string">.text</span>  <span class="comment">;代码段开始的地方  </span></div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Magic</div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Flags</div><div class="line">	<span class="pseudo">dd</span> MultiBoot_Checksum</div><div class="line">[<span class="built_in">GLOBAL</span> start]        <span class="comment">;外部可见的内核代码开始入口  </span></div><div class="line">[<span class="built_in">GLOBAL</span> glb_mboot_ptr]<span class="comment">;struct multiboot *变量  </span></div><div class="line">[<span class="built_in">EXTERN</span> main]   <span class="comment">;声明内核c代码的入口函数  </span></div><div class="line"><span class="label">start:</span>  </div><div class="line">	<span class="keyword">cli</span>		<span class="comment">;关中断  </span></div><div class="line">	<span class="keyword">mov</span> <span class="literal">esp</span>,STACK_TOP<span class="comment">;吧esp的值保存的栈顶  </span></div><div class="line">	<span class="keyword">mov</span> <span class="literal">ebp</span>,<span class="number">0</span>  </div><div class="line">	<span class="keyword">and</span> <span class="literal">esp</span>,<span class="number">0FFFFFFF0H</span><span class="comment">;按16字节对齐  </span></div><div class="line">	<span class="keyword">mov</span> [glb_mboot_ptr],<span class="number">ebx</span>  </div><div class="line">	<span class="keyword">call</span> main  </div><div class="line"><span class="label">stop:</span>  </div><div class="line">	<span class="keyword">hlt</span>  </div><div class="line">	<span class="keyword">jmp</span> stop</div></pre></td></tr></table></figure>
+
+
+<h3 id="寄存器状态"><strong>寄存器状态</strong></h3>
+<ul>
+<li><p>EAX<br>必须包含魔数0x2BADB002；这个值指出操作系统是被一个符合Multiboot规范的引导程序载入的（这样就算是另一种引导程序也可以引导这个操作系统）。</p>
+</li>
+<li><p>EBX<br>必须包含由引导程序提供的Multiboot信息结构的物理地址（参见引导信息格式）。</p>
+</li>
+<li><p>CS<br>必须是一个偏移量位于0到0xFFFFFFFF之间的32位可读/可执行代码段。这里的精确值未定义。</p>
+</li>
+<li><p>DS ES FS GS SS<br>必须是一个偏移量位于0到0xFFFFFFFF之间的32位可读/可执行代码段。这里的精确值未定义。</p>
+</li>
+<li><p>A20 gate<br>必须已经开启。</p>
+</li>
+<li><p>CR0<br>第31位（PG）必须为0。第0位（PE）必须为1。其他位未定义。</p>
+</li>
+<li><p>EFLAGS<br>第17位（VM）必须为0。第9位（IF）必须为1 。其他位未定义。<br>所有其他的处理器寄存器和标志位未定义。这包括：</p>
+</li>
+<li><p>ESP<br>当需要使用堆栈时，OS映象必须自己创建一个。</p>
+</li>
+<li><p>GDTR<br>尽管段寄存器像上面那样定义了，GDTR也可能是无效的，所以OS映象决不能载入任何段寄存器（即使是载入相同的值也不行！）直到它设定了自己的GDT。</p>
+</li>
+<li><p>IDTR<br>OS映象必须在设置完它的IDT之后才能开中断。<br>尽管如此，其他的机器状态应该被引导程序留做正常的工作顺序，也就是同BIOS（或者DOS，如果引导程序是从那里启动的话）初始化的状态一样。换句话说，操作系统应该能够在载入后进行BIOS调用，直到它自己重写BIOS数据结构之前。还有，引导程序必须将PIC设定为正常的BIOS/DOS 状态，尽管它们有可能在进入32位模式时改变它们。   </p>
+</li>
+</ul>
+<h2 id="2-_引导信息格式">2. 引导信息格式</h2>
+<p>  在进入操作系统时，EBX寄存器包含Multiboot信息数据结构的物理地址，引导程序通过它将重要的引导信息传递给操作系统。操作系统可以按自己的需要使用,或者忽略任何部分；所有的引导程序传递的信息只是建议性的。<br>        <em>这些信息在以后的开发中会用到</em><br>        Multiboot信息结构（就目前为止定义的）的格式如下：</p>
+<pre><code>         +---------------------------+
+ <span class="number">0</span>       <span class="localvars">| flags                          |</span>    (必需)
+         +---------------------------+
+ <span class="number">4</span>       <span class="localvars">| mem_lower             |</span>    (如果flags[<span class="number">0</span>]被置位则出现)
+ <span class="number">8</span>       <span class="localvars">| mem_upper            |</span>    (如果flags[<span class="number">0</span>]被置位则出现)
+         +---------------------------+
+ <span class="number">12</span>    <span class="localvars">| boot_device              |</span>    (如果flags[<span class="number">1</span>]被置位则出现)
+         +---------------------------+
+ <span class="number">16</span>    <span class="localvars">| cmdline                     |</span>    (如果flags[<span class="number">2</span>]被置位则出现)
+         +---------------------------+
+ <span class="number">20</span>    <span class="localvars">| mods_count              |</span>    (如果flags[<span class="number">3</span>]被置位则出现)
+ <span class="number">24</span>    <span class="localvars">| mods_addr                |</span>    (如果flags[<span class="number">3</span>]被置位则出现)  
+ <span class="number">28</span> - <span class="number">40</span> <span class="localvars">| syms                            |</span>    (如果flags[<span class="number">4</span>]或flags[<span class="number">5</span>]被置位则出现)  
+         +----------------------------+  
+ <span class="number">44</span>      <span class="localvars">| mmap_length          |</span>    (如果flags[<span class="number">6</span>]被置位则出现)  
+ <span class="number">48</span>      <span class="localvars">| mmap_addr             |</span>    (如果flags[<span class="number">6</span>]被置位则出现)  
+         +----------------------------+  
+ <span class="number">52</span>      <span class="localvars">| drives_length           |</span>    (如果flags[<span class="number">7</span>]被置位则出现)  
+ <span class="number">56</span>      <span class="localvars">| drives_addr              |</span>    (如果flags[<span class="number">7</span>]被置位则出现)  
+         +----------------------------+  
+ <span class="number">60</span>      <span class="localvars">| config_table              |</span>    (如果flags[<span class="number">8</span>]被置位则出现)  
+         +-----------------------------+  
+ <span class="number">64</span>      <span class="localvars">| boot_loader_name  |</span>    (如果flags[<span class="number">9</span>]被置位则出现)  
+         +-----------------------------+  
+ <span class="number">68</span>      <span class="localvars">| apm_table                 |</span>    (如果flags[<span class="number">10</span>]被置位则出现)  
+         +-----------------------------+  
+ <span class="number">72</span>      <span class="localvars">| vbe_control_info       |</span>    (如果flags[<span class="number">11</span>]被置位则出现)  
+ <span class="number">76</span>      <span class="localvars">| vbe_mode_info        |</span>  
+ <span class="number">80</span>      <span class="localvars">| vbe_mode                 |</span>  
+ <span class="number">82</span>      <span class="localvars">| vbe_interface_seg   |</span>  
+ <span class="number">84</span>      <span class="localvars">| vbe_interface_off     |</span>  
+ <span class="number">86</span>      <span class="localvars">| vbe_interface_len    |</span>  
+         +-----------------------------+   
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">typedef struct multiboot_t {</div><div class="line">	uint32_t flags;			// Multiboot 的版本信息</div><div class="line">	uint32_t mem_lower;</div><div class="line">	uint32_t mem_upper;</div><div class="line">	uint32_t boot_device;		// 指出引导程序从哪个BIOS磁盘设备载入的OS映像</div><div class="line">	uint32_t cmdline;		// 内核命令行</div><div class="line">	uint32_t mods_count;		// boot 模块列表</div><div class="line">	uint32_t mods_addr;</div><div class="line">	uint32_t num;</div><div class="line">	uint32_t size;</div><div class="line">	uint32_t addr;</div><div class="line">	uint32_t shndx;</div><div class="line">	uint32_t mmap_length;		</div><div class="line">	uint32_t mmap_addr;</div><div class="line">	uint32_t drives_length; 	// 指出第一个驱动器结构的物理地址	</div><div class="line">	uint32_t drives_addr; 		// 指出第一个驱动器这个结构的大小</div><div class="line">	uint32_t config_table; 		// ROM 配置表</div><div class="line">	uint32_t boot_loader_name; 	// boot loader 的名字</div><div class="line">	uint32_t apm_table; 	    	// APM 表</div><div class="line">	uint32_t vbe_control_info;</div><div class="line">	uint32_t vbe_mode_info;</div><div class="line">	uint32_t vbe_mode;</div><div class="line">	uint32_t vbe_interface_seg;</div><div class="line">	uint32_t vbe_interface_off;</div><div class="line">	uint32_t vbe_interface_len;  </div><div class="line">} __attribute__((packed)) multiboot_t;</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/31/2015-01-31-multiboot/" data-id="ymgyh078kmd3qgbf" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-01-31-cr-register" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/31/2015-01-31-cr-register/" class="article-date">
+  <time datetime="2015-01-31T02:07:35.000Z" itemprop="datePublished">1月 31 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="x86的控制寄存器">x86的控制寄存器</h1>
+<p><em>状态和控制寄存器组除了EFLAGS、EIP ，还有四个32位的控制寄存器，它们是CR0，CR1，CR2和CR3.</em>  </p>
+<h2 id="1-_CR0">1. CR0</h2>
+<pre><code> <span class="number">0</span>位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置<span class="number">1</span>，则保护模式启动，如果<span class="variable">PE=</span><span class="number">0</span>，则在实模式下运行。  
+ <span class="number">1</span> 位是监控协处理位MP(Moniter coprocessor)，它与第<span class="number">3</span>位一起决定：当<span class="variable">TS=</span><span class="number">1</span>时操作码WAIT是否产生一个“协处理器不能使用”的出错信号。第<span class="number">3</span>位是任务转换位(Task Switch)，当一个任务转换完成之后，自动将它置<span class="number">1</span>。随着<span class="variable">TS=</span><span class="number">1</span>，就不能使用协处理器。  
+ <span class="number">2</span>位是模拟协处理器位 EM (Emulate coprocessor)，如果<span class="variable">EM=</span><span class="number">1</span>，则不能使用协处理器，如果<span class="variable">EM=</span><span class="number">0</span>，则允许使用协处理器。  
+ <span class="number">4</span>位是微处理器的扩展类型位 ET(Processor Extension Type)，其内保存着处理器扩展类型的信息，如果<span class="variable">ET=</span><span class="number">0</span>，则标识系统使用的是<span class="number">287</span>协处理器，如果 <span class="variable">ET=</span><span class="number">1</span>，则表示系统使用的是<span class="number">387</span>浮点协处理器。  
+ <span class="number">31</span>位是分页允许位(Paging Enable)，它表示芯片上的分页部件是否允许工作。  
+ <span class="number">16</span>位是写保护未即WP位(<span class="number">486</span>系列之后)，只要将这一位置<span class="number">0</span>就可以禁用写保护，置<span class="number">1</span>则可将其恢复。  
+</code></pre><h2 id="2-_CR1">2. CR1</h2>
+<pre><code>  未定义  
+</code></pre><h2 id="3-_CR2">3. CR2</h2>
+<pre><code>  页故障线性地址寄存器，保存最后一次出现页故障的全32位线性地址。  
+</code></pre><h2 id="4-_CR3">4. CR3</h2>
+<pre><code>    用于保存页目录表页面的物理地址，因此被称为PDBR。由于目录是页对齐的，所以仅高<span class="number">20</span>位有效，低<span class="number">12</span>位保留供更加高级的处理器使用。向<span class="literal">CR3</span>中装入一个新值时，低<span class="number">12</span>位必须为<span class="number">0</span>；但从 <span class="literal">CR3</span>中取值时，低<span class="number">12</span>位被忽略。    
+
+    每当用<span class="keyword">MOV</span>指令重置<span class="literal">CR3</span>的值时，会导致分页机制高速缓冲区的内容无效，用此方法，可以在启用分页机制之前，即把PG位置<span class="number">1</span>之前，预先刷新分页机制的高速缓存。<span class="literal">CR3</span>寄存器即使在<span class="literal">CR0</span>寄存器的PG位或PE位为<span class="number">0</span>时也可装入，如在实模式下也可设置<span class="literal">CR3</span>，以便进行分页机 制的初始化。    
+
+    在任务切换时，<span class="literal">CR3</span>要被改变，但是如果新任务中<span class="literal">CR3</span>的值与原任务中<span class="literal">CR3</span>的值相同，那么处理器不刷新分页高速缓存，以便当任务共享页表时 有较快的执行速度。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/31/2015-01-31-cr-register/" data-id="9pm10aha3zb5pr2f" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-idt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/30/idt/" class="article-date">
+  <time datetime="2015-01-30T04:05:01.000Z" itemprop="datePublished">1月 30 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/30/idt/">中断描述符idt</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-_IDT">1. IDT</h1>
+<p>​在实地址模式中，CPU 把内存中从0 开始的1K 字节作为一个中断向量表。表中的每个表项占4 个字节，由两个字节的段基址和两个字节的偏移量组成，这样构成的地址便是相应中断处理程序的入口地址。在保护模式下，中断向量表中的表项由8 个字节组成，如图3.2 所示，中断向量表也改叫做中断描述符表IDT（Interrupt Descriptor Table）。其中的每个表项叫做一个门描述符（Gate Descriptor），“门”的含义是当中断发生时必须先通过这些门，然后才能进入相应的处理程序。<br>    <img src="http://www.pediy.com/kssd/pediy10/62336/435773/12891.jpg" alt="">  </p>
+<p>其中类型占3 位，表示门描述符的类型，这些描述符如下。</p>
+<p>1．任务门（Task gate）<br>其类型码为101，门中包含了一个进程的TSS 段选择符，但偏移量部分没有使用，因为TSS本身是作为一个段来对待的，因此，任务门不包含某一个入口函数的地址。TSS 是Intel 所提供的任务切换机制，但是 Linux 并没有采用任务门来进行任务切换。  </p>
+<p>2．中断门（Interrupt gate）<br>其类型码为110，中断门包含了一个中断或异常处理程序所在段的选择符和段内偏移量。当控制权通过中断门进入中断处理程序时，处理器清IF 标志，即关中断，以避免嵌套中断的发生。中断门中的DPL（Descriptor Privilege Level）为0，因此，用户态的进程不能访问Intel 的中断门。所有的中断处理程序都由中断门激活，并全部限制在内核态。  </p>
+<p>3．陷阱门（Trap gate）<br>其类型码为111，与中断门类似，其唯一的区别是，控制权通过陷阱门进入处理程序时维持IF 标志位不变，也就是说，不关中断。  </p>
+<p>4．系统（调用）门（System gate）<br>这是Linux 内核特别设置的，用来让用户态的进程访问Intel 的陷阱门，因此，门描述符的DPL 为3。通过系统门来激活4 个Linux 异常处理程序，它们的向量是3、4、5 及128，也就是说，在用户态下，可以使用int 3、into、bound 及int 0x80 四条汇编指令。   </p>
+<p>最后，在保护模式下，中断描述符表在内存的位置不再限于从地址0 开始的地方，而是可以放在内存的任何地方。为此，CPU 中增设了一个中断描述符表寄存器IDTR，用来存放中断描述符表在内存的起始地址。中断描述符表寄存器IDTR 是一个48 位的寄存器，其低16位保存中断描述符表的大小，高32 位保存IDT 的基址，如图所示。<br>    <img src="http://www.pediy.com/kssd/pediy10/76514/534027/20424.jpg" alt=""> </p>
+<h1 id="2-_中断和异常处理">2. 中断和异常处理</h1>
+<pre><code>   当<span class="built_in">CPU</span> 执行了当前指令之后，<span class="literal">CS</span> 和<span class="literal">EIP</span> 这对寄存器中所包含的内容就是下一条将要执行指令的逻辑地址。在对下一条指令执行前，<span class="built_in">CPU</span> 先要判断在执行当前指令的过程中是否发生了中断或异常。如果发生了一个中断或异常，那么<span class="built_in">CPU</span>  将做以下事情。   
+</code></pre><p>• 确定所发生中断或异常的向量 i（在0～255 之间）。<br>• 通过IDTR 寄存器找到IDT 表，读取IDT 表第 i 项（或叫第i 个门）。<br>• 分两步进行有效性检查：首先是“段”级检查，将CPU 的当前特权级CPL（存放在CS寄存器的最低两位）与IDT  中第 i 项中的段选择符中的RPL 相比较，如果RPL（3）大于CPL（0），就产生一个“通用保护”异常（中断向量13），因为中断处理程序的特权级不能低于引起中断的程序的特权级。这种情况发生的可能性不大，因为中断处理程序一般运行在内核态，其特权级为0。然后是“门”级检查，把CPL  与IDT 中第 i 个门的DPL 相比较，如果CPL （3）大于DPL（0），CPU 就不能“穿过”这个门，于是产生一个“通用保护”异常，这是为了避免用户应用程序访问特殊的陷阱门或中断门。但是请注意，这种检查是针对一般的用户程序引起的中断（INT  指令），而不包括外部I/O 产生的中断或因CPU内部异常而产生的异常，也就是说，如果产生了中断或异常，就免去了“门”级检查。<br>• 检查是否发生了特权级的变化。若中断发生时CPU运行在用户空间，而中断处理程序运行在内核态，特权级发生了变化，所以会引起堆栈的更换。也就是说，从用户堆栈切换到内核堆栈。而当中断发生在内核态时，即CPU  在内核中运行时，则不会更换堆栈。<br> <strong>CS : EIP 的值就是IDT 表中第i 项门描述符的段选择符和偏移量的值，此时，CPU 就跳转到了中断或异常处理程序。</strong>    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/30/idt/" data-id="2ggwovrly0ql429r" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/30/pic/" class="article-date">
+  <time datetime="2015-01-30T03:03:42.000Z" itemprop="datePublished">1月 30 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/30/pic/">8259a pic原理收集</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="8259a_pic_原理收集">8259a pic 原理收集</h1>
+<p><em>最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料</em><br><strong>1. 简介</strong>  </p>
+<p>8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt Controller)进行控制，并传递给CPU。<br>一个8259A芯片的可以接最多8个中断源，但由于可以将2个或多个8259A芯片级连（cascade），并且最多可以级连到9个，所以最多可以接64个中断源。如今绝大多数的PC都拥有两个8259A，这样 最多可以接收15个中断源。<br>通过8259A可以对单个中断源进行屏蔽。  </p>
+<p><strong>2. 内部寄存器功能介绍</strong>  </p>
+<pre><code> 在一个<span class="number">8259</span><span class="literal">A</span>芯片有如下几个内部寄存器
+</code></pre><p>Interrupt Mask Register (IMR)。<br>Interrupt Request Register (IRR）。<br>In Service Register (ISR）。<br>IMR被用作过滤被屏蔽的中断，IRR被用作暂时放置未被进一步处理的Interrupt，当一个Interrupt正在被CPU处理时，此中断被放置在ISR中。<br>除了这几个寄存器之外，8259A还有一个单元叫做Priority Resolver，当多个中断同时发生时，Priority Resolver根据它们的优先级，将高优先级者优先传递给CPU。  </p>
+<p><strong>3. 工作原理</strong>  </p>
+<p>当一个中断请求从IR0到IR7中的某根线到达IMR时，IMR首先判断此IR是否被屏蔽，如果被屏蔽，则此中断请求被丢弃；否则，则将其放入IRR中。在此中断请求不能进行下一步处理之前，它一直被放在IRR中。一旦发现处理中断的时机已到，Priority Resolver将从所有被放置于IRR中的中断中挑选出一个优先级最高的中断，将其传递给CPU去处理。IR号越低的中断优先级别越高，比如IR0的优先级别是最高的。<br>8259A通过发送一个INTR(Interrupt Request）信号给CPU，通知CPU有一个中断到达。CPU收到这个信号后，会暂停执行下一条指令，然后发送一个INTA(Interrupt Acknowledge）信号给8259A。8259A收到这个信号之后，马上将ISR中对应此中断请求的Bit设置，同时IRR中相应的bit会被reset。比如，如果当前的中断请求是IR3的话，那么ISR中的bit-3就会被设置，IRR中IR3对应的bit就会被reset。这表示此中断请求正在被CPU处理，而不是正在等待CPU处理。<br>随后，CPU会再次发送一个INTA信号给8259A，要求它告诉CPU此中断请求的中断向量是什么，这是一个从0到255的一个数。8259A根据被设置的起始向量号（起始向量号通过中断控制字ICW2被初始化）加上中断请求号计算出中断向量号，并将其放置在Data Bus上。比如被初始化的起始向量号为8，当前的中断请求为IR3，则计算出的中断向量为8+3=11。<br>       CPU从Data Bus上得到这个中断向量之后，就去IDT中找到相应的中断服务程序ISR，并调用它。如果8259A的End of Interrupt (EOI）通知被设定位人工模式，那么当ISR处理完该处理的事情之后，应该发送一个EOI给8259A。<br>8259A得到EOI通知之后，ISR寄存器中对应于此中断请求的Bit会被Reset。<br>如果8259A的End of Interrupt (EOI）通知被设定位自动模式，那么在第2个INTA信号收到后，8259A ISR寄存器中对应于此中断请求的Bit就会被Reset。<br>在此期间，如果又有新的中断请求到 达，并被放置于IRR中，如果这些新的中断请求中有比在ISR寄存中放置的所有中断优先级别还高的话，那么这些高优先级别的中断请求将会被马上按照上述过 程进行处理；否则，这些中断将会被放在IRR中，直到ISR中高优先级别的中断被处理结束，也就是说知道ISR寄存器中高优先级别的bit被Reset为 止。  </p>
+<p><strong>4. 中断向量</strong>  </p>
+<p>当Intel CPU运行在32位保护模式下时，需要使用中断描述符表(Interrupt Descriptor Table，IDT)来管理中断或异常。IDT是Intel 8086～80186 CPU中使用的中断向量表的直接替代物。其作用也类似于中断向量表，只是其中每个中断描述符项中除了含有中断服务程序地址以外，还包含有关特权级和描述符类别等信息。Linux操作系统工作于80x86的保护模式下，因此它使用中断描述符表来设置和保存各中断的”向量”信息。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/30/pic/" data-id="hzzdkxmcpkue41i8" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 15.00px;">java</a><a href="/tags/tmp/" style="font-size: 10.00px;">tmp</a><a href="/tags/操作系统/" style="font-size: 20.00px;">操作系统</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/idt/">中断描述符idt</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/pic/">8259a pic原理收集</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://becool.sinaapp.com" target="_blank">football news</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Yixin Luo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
 </footer>
-</div>
-</div><!-- /scroller -->
-
-</div><!-- /pusher -->
-</div><!-- /container -->
-</div>
-
-<!-- Easter eggs -->
-
-<div class="egg animated">
-    <a id="close-button" href="#">X</a>
-    <div class="block">
-        <div class="loading">
-            <span class="ball1"></span>
-            <span class="ball2"></span>
-        </div>
-    </div>
-</div>
+  </div>
+  <nav id="mobile-nav">
   
-<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) {
-        var script = document.createElement('script');
-        script.src = "/js/jquery.min.js";
-        document.body.appendChild(script);
-    }
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
-<script type="text/javascript" src="/js/lib.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
 
-
-
-
+</div>
 </body>
 </html>

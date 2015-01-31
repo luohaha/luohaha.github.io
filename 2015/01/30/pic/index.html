@@ -1,287 +1,340 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="utf-8">
+  
   <title>8259a pic原理收集 | Luo&#39;s blog</title>
-  <meta name="description" content="分享与积累" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/component.css" />
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="Luo's blog">
-  <script src="http://static.duoshuo.com/embed.js"></script>
-  
-  
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="8259a pic 原理收集
+最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
+8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8259a pic原理收集">
+<meta property="og:url" content="http://yoursite.com/2015/01/30/pic/">
+<meta property="og:site_name" content="Luo's blog">
+<meta property="og:description" content="8259a pic 原理收集
+最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
+8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8259a pic原理收集">
+<meta name="twitter:description" content="8259a pic 原理收集
+最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
+8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt">
 
   
+    <link rel="alternative" href="/atom.xml" title="Luo&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
 </head>
 <body>
-<div class="container">
-    <div class="mp-pusher" id="mp-pusher">
-        <i id="scroll-up" class="fa fa-angle-up"></i>
-        <nav id="mp-menu" class="mp-menu">
-            <div class="mp-level">
-                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
-                        Home</h2></a>
-                <ul class="first-level">
-                    <li>
-                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Archive</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-archive"></i>
-                                Archive</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-archive" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/idt/">中断描述符idt</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/pic/">8259a pic原理收集</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Categories</a>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Luo&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">分享与积累</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-pic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/30/pic/" class="article-date">
+  <time datetime="2015-01-30T03:03:42.000Z" itemprop="datePublished">1月 30 2015</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/code/">code</a>
+  </div>
 
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-copy"></i>
-                                Categories</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-category" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-category-li mp-pjax">
-                                    <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>5</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;Tags</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-tags"></i>
-                                Tags</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-tag" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
-                                    <small>1</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
-                                    <small>0</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>4</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
-                </ul>
-
-            </div>
-        </nav>
-        <div id="pjax">
-            <div class="pjax-hidden" style="display: none">
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
-                
-                    <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-                
-                    <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
-                
-                    <a  data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
-                
-                    <a  data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-                
-                
-                    <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
-                
-                
-                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
-                
-                    <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
-                
-                    <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
-                
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
-            </div>
-            <nav class="nexus">
-                <li  style="border-left: 1px solid #c6d0da;">
-                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li ><a id="nexus-back" data-pjax href="/">Luo&#39;s blog</a></li>
-                
-                <div id="nav-container">
-                    <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">8259a pic原理收集</a></li>
-                        <li id="navbar-toc" style="border-left: none">
-                            <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
-                            </a>
-                            <div class="hidden-box">
-                                <ul id="toc"></ul>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-                
-            </nav>
-
-            <div class="scroller">
-            <div class="scroller-inner">
-
-
-<!-- -->
-<!--<body class="post-template">-->
-<!---->
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      8259a pic原理收集
+    </h1>
   
 
-<main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                      
-                      <a data-pjax href='/tags/操作系统/' style='color:#D5D5D5'>操作系统</a>
-                      
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">8259a pic原理收集</h1>
-
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2015-01-30T03:03:42.000Z"
-                              itemprop="datePublished">1月 30 2015</time>
-                    </div>
-    </span>
-
-        <section class="post-content">
-            <h1 id="8259a_pic_原理收集">8259a pic 原理收集</h1>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="8259a_pic_原理收集">8259a pic 原理收集</h1>
 <p><em>最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料</em><br><strong>1. 简介</strong>  </p>
 <p>8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt Controller)进行控制，并传递给CPU。<br>一个8259A芯片的可以接最多8个中断源，但由于可以将2个或多个8259A芯片级连（cascade），并且最多可以级连到9个，所以最多可以接64个中断源。如今绝大多数的PC都拥有两个8259A，这样 最多可以接收15个中断源。<br>通过8259A可以对单个中断源进行屏蔽。  </p>
 <p><strong>2. 内部寄存器功能介绍</strong>  </p>
 <pre><code> 在一个<span class="number">8259</span><span class="literal">A</span>芯片有如下几个内部寄存器
 </code></pre><p>Interrupt Mask Register (IMR)。<br>Interrupt Request Register (IRR）。<br>In Service Register (ISR）。<br>IMR被用作过滤被屏蔽的中断，IRR被用作暂时放置未被进一步处理的Interrupt，当一个Interrupt正在被CPU处理时，此中断被放置在ISR中。<br>除了这几个寄存器之外，8259A还有一个单元叫做Priority Resolver，当多个中断同时发生时，Priority Resolver根据它们的优先级，将高优先级者优先传递给CPU。  </p>
 <p><strong>3. 工作原理</strong>  </p>
-<pre><code> 当一个中断请求从IR0到IR7中的某根线到达IMR时，IMR首先判断此IR是否被屏蔽，如果被屏蔽，则此中断请求被丢弃；否则，则将其放入IRR中。在此中断请求不能进行下一步处理之前，它一直被放在IRR中。一旦发现处理中断的时机已到，Priority Resolver将从所有被放置于IRR中的中断中挑选出一个优先级最高的中断，将其传递给<span class="built_in">CPU</span>去处理。IR号越低的中断优先级别越高，比如IR0的优先级别是最高的。
-</code></pre><p>8259A通过发送一个INTR(Interrupt Request）信号给CPU，通知CPU有一个中断到达。CPU收到这个信号后，会暂停执行下一条指令，然后发送一个INTA(Interrupt Acknowledge）信号给8259A。8259A收到这个信号之后，马上将ISR中对应此中断请求的Bit设置，同时IRR中相应的bit会被reset。比如，如果当前的中断请求是IR3的话，那么ISR中的bit-3就会被设置，IRR中IR3对应的bit就会被reset。这表示此中断请求正在被CPU处理，而不是正在等待CPU处理。<br>随后，CPU会再次发送一个INTA信号给8259A，要求它告诉CPU此中断请求的中断向量是什么，这是一个从0到255的一个数。8259A根据被设置的起始向量号（起始向量号通过中断控制字ICW2被初始化）加上中断请求号计算出中断向量号，并将其放置在Data Bus上。比如被初始化的起始向量号为8，当前的中断请求为IR3，则计算出的中断向量为8+3=11。<br>       CPU从Data Bus上得到这个中断向量之后，就去IDT中找到相应的中断服务程序ISR，并调用它。如果8259A的End of Interrupt (EOI）通知被设定位人工模式，那么当ISR处理完该处理的事情之后，应该发送一个EOI给8259A。<br>8259A得到EOI通知之后，ISR寄存器中对应于此中断请求的Bit会被Reset。<br>如果8259A的End of Interrupt (EOI）通知被设定位自动模式，那么在第2个INTA信号收到后，8259A ISR寄存器中对应于此中断请求的Bit就会被Reset。<br>在此期间，如果又有新的中断请求到 达，并被放置于IRR中，如果这些新的中断请求中有比在ISR寄存中放置的所有中断优先级别还高的话，那么这些高优先级别的中断请求将会被马上按照上述过 程进行处理；否则，这些中断将会被放在IRR中，直到ISR中高优先级别的中断被处理结束，也就是说知道ISR寄存器中高优先级别的bit被Reset为 止。  </p>
+<p>当一个中断请求从IR0到IR7中的某根线到达IMR时，IMR首先判断此IR是否被屏蔽，如果被屏蔽，则此中断请求被丢弃；否则，则将其放入IRR中。在此中断请求不能进行下一步处理之前，它一直被放在IRR中。一旦发现处理中断的时机已到，Priority Resolver将从所有被放置于IRR中的中断中挑选出一个优先级最高的中断，将其传递给CPU去处理。IR号越低的中断优先级别越高，比如IR0的优先级别是最高的。<br>8259A通过发送一个INTR(Interrupt Request）信号给CPU，通知CPU有一个中断到达。CPU收到这个信号后，会暂停执行下一条指令，然后发送一个INTA(Interrupt Acknowledge）信号给8259A。8259A收到这个信号之后，马上将ISR中对应此中断请求的Bit设置，同时IRR中相应的bit会被reset。比如，如果当前的中断请求是IR3的话，那么ISR中的bit-3就会被设置，IRR中IR3对应的bit就会被reset。这表示此中断请求正在被CPU处理，而不是正在等待CPU处理。<br>随后，CPU会再次发送一个INTA信号给8259A，要求它告诉CPU此中断请求的中断向量是什么，这是一个从0到255的一个数。8259A根据被设置的起始向量号（起始向量号通过中断控制字ICW2被初始化）加上中断请求号计算出中断向量号，并将其放置在Data Bus上。比如被初始化的起始向量号为8，当前的中断请求为IR3，则计算出的中断向量为8+3=11。<br>       CPU从Data Bus上得到这个中断向量之后，就去IDT中找到相应的中断服务程序ISR，并调用它。如果8259A的End of Interrupt (EOI）通知被设定位人工模式，那么当ISR处理完该处理的事情之后，应该发送一个EOI给8259A。<br>8259A得到EOI通知之后，ISR寄存器中对应于此中断请求的Bit会被Reset。<br>如果8259A的End of Interrupt (EOI）通知被设定位自动模式，那么在第2个INTA信号收到后，8259A ISR寄存器中对应于此中断请求的Bit就会被Reset。<br>在此期间，如果又有新的中断请求到 达，并被放置于IRR中，如果这些新的中断请求中有比在ISR寄存中放置的所有中断优先级别还高的话，那么这些高优先级别的中断请求将会被马上按照上述过 程进行处理；否则，这些中断将会被放在IRR中，直到ISR中高优先级别的中断被处理结束，也就是说知道ISR寄存器中高优先级别的bit被Reset为 止。  </p>
 <p><strong>4. 中断向量</strong>  </p>
-<pre><code>   当Intel CPU运行在<span class="number">32</span>位保护模式下时，需要使用中断描述符表(<span class="keyword">Interrupt</span> Descriptor <span class="keyword">Table</span>，IDT)来管理中断或异常。IDT是Intel <span class="number">8086</span>～<span class="number">80186</span> CPU中使用的中断向量表的直接替代物。其作用也类似于中断向量表，只是其中每个中断描述符项中除了含有中断服务程序地址以外，还包含有关特权级和描述符类别等信息。Linux操作系统工作于<span class="number">80</span>x86的保护模式下，因此它使用中断描述符表来设置和保存各中断的<span class="string">"向量"</span>信息。
-</code></pre>
-        </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a data-pjax class="newer-posts" href="/2015/01/30/idt/">← Prev Post</a>
-            
-            <a class="share-button" data-original-title title>Share this Post</a>
-            
-            <a data-pjax class="older-posts" href="/2015/01/30/java_memory/">Next Post →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
+<p>当Intel CPU运行在32位保护模式下时，需要使用中断描述符表(Interrupt Descriptor Table，IDT)来管理中断或异常。IDT是Intel 8086～80186 CPU中使用的中断向量表的直接替代物。其作用也类似于中断向量表，只是其中每个中断描述符项中除了含有中断服务程序地址以外，还包含有关特权级和描述符类别等信息。Linux操作系统工作于80x86的保护模式下，因此它使用中断描述符表来设置和保存各中断的”向量”信息。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2015/01/30/pic/" data-id="hzzdkxmcpkue41i8" class="article-share-link" data-share="baidu">分享到</a>
+      
 
-    </article>
-</main>
+      
 
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
 
+    </footer>
+  </div>
   
-<footer class="site-footer">
     
-    <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; Luo's blog 2014</section>
-        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
-    </div>
-</footer>
-</div>
-</div><!-- /scroller -->
-
-</div><!-- /pusher -->
-</div><!-- /container -->
-</div>
-
-<!-- Easter eggs -->
-
-<div class="egg animated">
-    <a id="close-button" href="#">X</a>
-    <div class="block">
-        <div class="loading">
-            <span class="ball1"></span>
-            <span class="ball2"></span>
-        </div>
-    </div>
-</div>
+<nav id="article-nav">
   
-<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) {
-        var script = document.createElement('script');
-        script.src = "/js/jquery.min.js";
-        document.body.appendChild(script);
-    }
+    <a href="/2015/01/30/idt/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          中断描述符idt
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/30/java_memory/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">看看java是如何分配内存的</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a><span class="tag-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 15.00px;">java</a><a href="/tags/tmp/" style="font-size: 10.00px;">tmp</a><a href="/tags/操作系统/" style="font-size: 20.00px;">操作系统</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/idt/">中断描述符idt</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/pic/">8259a pic原理收集</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://becool.sinaapp.com" target="_blank">football news</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Yixin Luo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
 </script>
-<script type="text/javascript" src="/js/lib.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
 
-
-
-
+</div>
 </body>
 </html>
