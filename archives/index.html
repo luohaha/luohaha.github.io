@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2015/01/30/idt/">中断描述符idt</a>
                                 </li>
                                 
@@ -74,7 +78,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>3</small>
+                                    <small>4</small>
                                 </li>
                                 
                                 </div>
@@ -106,7 +110,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>2</small>
+                                    <small>3</small>
                                 </li>
                                 
                                 </div>
@@ -123,6 +127,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
                 
                     <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
                 
@@ -174,6 +180,40 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/操作系统/'>操作系统</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-31T02:07:35.000Z"
+                      itemprop="datePublished">1月 31 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                x86的控制寄存器
+状态和控制寄存器组除了EFLAGS、EIP ，还有四个32位的控制寄存器，它们是CR0，CR1，CR2和CR3.  
+1. CR0
+ 0位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置1，则保护模式启动，如果PE=0，则在实模式下运行。  
+ 1 位是监控协处理位MP(Moniter coprocessor)，它与第3位一起决定：当TS=1时操作码WAIT是否产生一个“协处理器不
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 

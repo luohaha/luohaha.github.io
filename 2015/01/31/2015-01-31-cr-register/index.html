@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Category: code | Luo&#39;s blog</title>
+  <title>x86的控制寄存器 | Luo&#39;s blog</title>
   <meta name="description" content="分享与积累" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -156,7 +156,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">x86的控制寄存器</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -175,146 +175,69 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/操作系统/' style='color:#D5D5D5'>操作系统</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">x86的控制寄存器</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-01-31T02:07:35.000Z"
+                              itemprop="datePublished">1月 31 2015</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
-            </h1>
+        <section class="post-content">
+            <h1 id="x86的控制寄存器">x86的控制寄存器</h1>
+<p><em>状态和控制寄存器组除了EFLAGS、EIP ，还有四个32位的控制寄存器，它们是CR0，CR1，CR2和CR3.</em>  </p>
+<h2 id="1-_CR0">1. CR0</h2>
+<pre><code> <span class="number">0</span>位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置<span class="number">1</span>，则保护模式启动，如果<span class="variable">PE=</span><span class="number">0</span>，则在实模式下运行。  
+ <span class="number">1</span> 位是监控协处理位MP(Moniter coprocessor)，它与第<span class="number">3</span>位一起决定：当<span class="variable">TS=</span><span class="number">1</span>时操作码WAIT是否产生一个“协处理器不能使用”的出错信号。第<span class="number">3</span>位是任务转换位(Task Switch)，当一个任务转换完成之后，自动将它置<span class="number">1</span>。随着<span class="variable">TS=</span><span class="number">1</span>，就不能使用协处理器。  
+ <span class="number">2</span>位是模拟协处理器位 EM (Emulate coprocessor)，如果<span class="variable">EM=</span><span class="number">1</span>，则不能使用协处理器，如果<span class="variable">EM=</span><span class="number">0</span>，则允许使用协处理器。  
+ <span class="number">4</span>位是微处理器的扩展类型位 ET(Processor Extension Type)，其内保存着处理器扩展类型的信息，如果<span class="variable">ET=</span><span class="number">0</span>，则标识系统使用的是<span class="number">287</span>协处理器，如果 <span class="variable">ET=</span><span class="number">1</span>，则表示系统使用的是<span class="number">387</span>浮点协处理器。  
+ <span class="number">31</span>位是分页允许位(Paging Enable)，它表示芯片上的分页部件是否允许工作。  
+ <span class="number">16</span>位是写保护未即WP位(<span class="number">486</span>系列之后)，只要将这一位置<span class="number">0</span>就可以禁用写保护，置<span class="number">1</span>则可将其恢复。  
+</code></pre><h2 id="2-_CR1">2. CR1</h2>
+<pre><code>  未定义  
+</code></pre><h2 id="3-_CR2">3. CR2</h2>
+<pre><code>  页故障线性地址寄存器，保存最后一次出现页故障的全32位线性地址。  
+</code></pre><h2 id="4-_CR3">4. CR3</h2>
+<pre><code>    用于保存页目录表页面的物理地址，因此被称为PDBR。由于目录是页对齐的，所以仅高<span class="number">20</span>位有效，低<span class="number">12</span>位保留供更加高级的处理器使用。向<span class="literal">CR3</span>中装入一个新值时，低<span class="number">12</span>位必须为<span class="number">0</span>；但从 <span class="literal">CR3</span>中取值时，低<span class="number">12</span>位被忽略。    
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-31T02:07:35.000Z"
-                      itemprop="datePublished">1月 31 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                x86的控制寄存器
-状态和控制寄存器组除了EFLAGS、EIP ，还有四个32位的控制寄存器，它们是CR0，CR1，CR2和CR3.  
-1. CR0
- 0位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置1，则保护模式启动，如果PE=0，则在实模式下运行。  
- 1 位是监控协处理位MP(Moniter coprocessor)，它与第3位一起决定：当TS=1时操作码WAIT是否产生一个“协处理器不
-                
-            </p>
-            
+    每当用<span class="keyword">MOV</span>指令重置<span class="literal">CR3</span>的值时，会导致分页机制高速缓冲区的内容无效，用此方法，可以在启用分页机制之前，即把PG位置<span class="number">1</span>之前，预先刷新分页机制的高速缓存。<span class="literal">CR3</span>寄存器即使在<span class="literal">CR0</span>寄存器的PG位或PE位为<span class="number">0</span>时也可装入，如在实模式下也可设置<span class="literal">CR3</span>，以便进行分页机 制的初始化。    
+
+    在任务切换时，<span class="literal">CR3</span>要被改变，但是如果新任务中<span class="literal">CR3</span>的值与原任务中<span class="literal">CR3</span>的值相同，那么处理器不刷新分页高速缓存，以便当任务共享页表时 有较快的执行速度。
+</code></pre>
         </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T04:05:01.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                1. IDT
-​在实地址模式中，CPU 把内存中从0 开始的1K 字节作为一个中断向量表。表中的每个表项占4 个字节，由两个字节的段基址和两个字节的偏移量组成，这样构成的地址便是相应中断处理程序的入口地址。在保护模式下，中断向量表中的表项由8 个字节组成，如图3.2 所示，中断向量表也改叫做中断描述符表IDT（Interrupt Descriptor Table）。其中的每个表项叫做一个门描述符（Gate Descriptor），“门”
-                
-            </p>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T03:03:42.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                8259a pic 原理收集
-最近在写一个简单的kernel, 中断弄得我很头疼, 查询了很多资料, 顺便整理下一些关于8259a pic的资料1. 简介  
-8259A芯片是一个中断管理芯片，中断的来源除了来自于硬件自身的NMI中断和来自于软件的INT n指令造成的软件中断之外，还有来自于外部硬件设备的中断，这些中断是可屏蔽的。这些中断也都通过PIC(Programmable Interrupt Controller)进行控制，并传递
-                
-            </p>
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
             
-        </section>
-    </article>
-    
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/java/'>java</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-01-30T01:59:53.000Z"
-                      itemprop="datePublished">1月 30 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                
-java各类型占用的内存
-Primitive Type       Memory Required(bytes)boolean                 1byte                        1short                       2char                        2int                           4float               
-                
-            </p>
+            <a class="share-button" data-original-title title>Share this Post</a>
             
+            <a data-pjax class="older-posts" href="/2015/01/30/idt/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
         </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
 </main>
 
 
