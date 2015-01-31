@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
                                 </li>
                                 
@@ -78,7 +82,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>4</small>
+                                    <small>5</small>
                                 </li>
                                 
                                 </div>
@@ -110,7 +114,7 @@
                                 
                                 <li class="search-tag-li mp-pjax">
                                     <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>3</small>
+                                    <small>4</small>
                                 </li>
                                 
                                 </div>
@@ -127,6 +131,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
                 
                     <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
                 
@@ -180,6 +186,41 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/操作系统/'>操作系统</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-01-31T03:51:55.000Z"
+                      itemprop="datePublished">1月 31 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                介绍
+   Multiboot 定义了一个从boot loader到operating system的接口, 因此在编写操作系统时,只要遵守这个规范, 就可以轻松载入. 大概就是这个意思, 接下来直接进入重点, 有关于格式规范的介绍.     
+OS image format
+1. multiboot header的布局
+      multiboot头部的布局必须遵守一下规范:  
+偏移量 类型 域名 备注0  u32  magic 
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 
