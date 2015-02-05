@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2015/02/02/2015-2-2-ld/">研究下ldscript,lma与vma</a>
                                 </li>
                                 
@@ -86,7 +90,7 @@
                                 
                                 <li class="search-category-li mp-pjax">
                                     <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
-                                    <small>6</small>
+                                    <small>7</small>
                                 </li>
                                 
                                 </div>
@@ -107,18 +111,18 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C语言/">&nbsp;&nbsp;&nbsp;C语言</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
                                     <small>1</small>
                                 </li>
                                 
                                 <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/tmp/">&nbsp;&nbsp;&nbsp;tmp</a>
-                                    <small>0</small>
-                                </li>
-                                
-                                <li class="search-tag-li mp-pjax">
                                     <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
-                                    <small>5</small>
+                                    <small>6</small>
                                 </li>
                                 
                                 </div>
@@ -137,6 +141,8 @@
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
                 
+                    <a  data-pjax href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
+                
                     <a  data-pjax href="/2015/02/02/2015-2-2-ld/">研究下ldscript,lma与vma</a>
                 
                     <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
@@ -153,9 +159,9 @@
                     <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
                 
                 
-                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
+                    <a data-pjax href="/tags/C语言/">&nbsp;&nbsp;C语言</a>
                 
-                    <a data-pjax href="/tags/tmp/">&nbsp;&nbsp;tmp</a>
+                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
                 
                     <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
                 
@@ -193,6 +199,41 @@
   
 <main class="content" role="main">
 
+    
+    <article class="post">
+
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/C语言/'>C语言</a>
+                
+                <a data-pjax href='/tags/操作系统/'>操作系统</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
+            </h1>
+
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-02-05T08:16:06.000Z"
+                      itemprop="datePublished">2月 5 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                VFS
+ 因为在一个操作系统中不单只有一种文件系统，要使操作系统能够支持不同的文件系统，让他们能够友好共存，这就是VFS（Virtaul Filesystem Switch）的使命。VFS将对各种不同文件系统的管理和操作纳入到一个统一的框架中，使得用户程序可以通过同一个文件系统调用，对各种不同的文件系统和文件进行操作，而无需关心文件属于什么文件系统。  
+接下来看看具体实现：  
+12345678910//定义指向函数的指针，对应不同的
+                
+            </p>
+            
+        </section>
+    </article>
     
     <article class="post">
 

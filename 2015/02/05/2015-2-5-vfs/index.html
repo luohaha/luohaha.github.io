@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>简单的vfs实现和读取initrd中的文件 | Luo&#39;s blog</title>
+  <meta name="description" content="分享与积累" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <meta name="generator" content="Luo's blog">
+  <script src="http://static.duoshuo.com/embed.js"></script>
+  
+  
+  
+
+  
+
+</head>
+<body>
+<div class="container">
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
+                        Home</h2></a>
+                <ul class="first-level">
+                    <li>
+                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Archive</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-archive"></i>
+                                Archive</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/02/02/2015-2-2-ld/">研究下ldscript,lma与vma</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/30/idt/">中断描述符idt</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/30/pic/">8259a pic原理收集</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Categories</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-copy"></i>
+                                Categories</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-category-li mp-pjax">
+                                    <a href="/categories/code/">&nbsp;&nbsp;&nbsp;code</a>
+                                    <small>7</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-tags"></i>
+                                Tags</h2>
+                            <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
+                            <ul>
+                                <div class="mp-scroll">
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/C语言/">&nbsp;&nbsp;&nbsp;C语言</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/java/">&nbsp;&nbsp;&nbsp;java</a>
+                                    <small>1</small>
+                                </li>
+                                
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="/tags/操作系统/">&nbsp;&nbsp;&nbsp;操作系统</a>
+                                    <small>6</small>
+                                </li>
+                                
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="mp-pjax"><a class="fa fa-user"  href="Mailto:965166527@qq.com">&nbsp;&nbsp;&nbsp;contact me</a></li>
+                  <!--  <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>  -->
+		    <li><a class="" href="http://becool.sinaapp.com">football news</a></li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div id="pjax">
+            <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
+                
+                    <a  data-pjax href="/2015/02/02/2015-2-2-ld/">研究下ldscript,lma与vma</a>
+                
+                    <a  data-pjax href="/2015/01/31/2015-01-31-multiboot/">一张grub multiboot的说明书</a>
+                
+                    <a  data-pjax href="/2015/01/31/2015-01-31-cr-register/">x86的控制寄存器</a>
+                
+                    <a  data-pjax href="/2015/01/30/idt/">中断描述符idt</a>
+                
+                    <a  data-pjax href="/2015/01/30/pic/">8259a pic原理收集</a>
+                
+                    <a  data-pjax href="/2015/01/30/java_memory/">看看java是如何分配内存的</a>
+                
+                
+                    <a data-pjax href="/categories/code/">&nbsp;&nbsp;code</a>
+                
+                
+                    <a data-pjax href="/tags/C语言/">&nbsp;&nbsp;C语言</a>
+                
+                    <a data-pjax href="/tags/java/">&nbsp;&nbsp;java</a>
+                
+                    <a data-pjax href="/tags/操作系统/">&nbsp;&nbsp;操作系统</a>
+                
+                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
+            </div>
+            <nav class="nexus">
+                <li  style="border-left: 1px solid #c6d0da;">
+                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+                <li ><a id="nexus-back" data-pjax href="/">Luo&#39;s blog</a></li>
+                
+                <div id="nav-container">
+                    <div class="post-navbar" style="line-height: 63px;display:none">
+                        <li id="navbar-title"><a href="#">简单的vfs实现和读取initrd中的文件</a></li>
+                        <li id="navbar-toc" style="border-left: none">
+                            <a style="padding-right: 15px">
+                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
+                            </a>
+                            <div class="hidden-box">
+                                <ul id="toc"></ul>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <div class="scroller">
+            <div class="scroller-inner">
+
+
+<!-- -->
+<!--<body class="post-template">-->
+<!---->
+  
+
+<main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/C语言/' style='color:#D5D5D5'>C语言</a>
+                      
+                      <a data-pjax href='/tags/操作系统/' style='color:#D5D5D5'>操作系统</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">简单的vfs实现和读取initrd中的文件</h1>
+
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-02-05T08:16:06.000Z"
+                              itemprop="datePublished">2月 5 2015</time>
+                    </div>
+    </span>
+
+        <section class="post-content">
+            <h1 id="VFS">VFS</h1>
+<pre><code> 因为在一个操作系统中不单只有一种文件系统，要使操作系统能够支持不同的文件系统，让他们能够友好共存，这就是VFS（Virtaul Filesystem <span class="keyword">Switch</span>）的使命。VFS将对各种不同文件系统的管理和操作纳入到一个统一的框架中，使得用户程序可以通过同一个文件系统调用，对各种不同的文件系统和文件进行操作，而无需关心文件属于什么文件系统。  
+</code></pre><p>接下来看看具体实现：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义指向函数的指针，对应不同的文件系统，有不同的函数，使用这种方式可以</span></div><div class="line"><span class="comment">//统一接口</span></div><div class="line">typedef unsigned int <span class="comment">(*read_type_t)(struct fs_node*,unsigned int,unsigned int,unsigned char*)</span>;<span class="comment">//读文件</span></div><div class="line">typedef unsigned int <span class="comment">(*write_type_t)(struct fs_node*,unsigned int,unsigned int,unsigned char*)</span>;<span class="comment">//写文件</span></div><div class="line">typedef void <span class="comment">(*open_type_t)(struct fs_node*)</span>;<span class="comment">//打开文件，然后可以接下其他动作</span></div><div class="line">typedef void <span class="comment">(*close_type_t)(struct fs_node*)</span>;<span class="comment">//关闭文件</span></div><div class="line">typedef struct dirent * <span class="comment">(*readdir_type_t)(struct fs_node*,unsigned int);</span></div><div class="line">//获取目录文件信息,返回目录项指针，因为有很多的目录项（每个文件对应一个）</div><div class="line">typedef struct fs_node * (*finddir_type_t)(struct fs_node*,char *name);</div><div class="line">//找到文件</div></pre></td></tr></table></figure>
+
+<pre><code> 上面是函数指针，实际上就是函数跳转表，每个函数指针指向具体文件系统用来实现文件操作的入口函数。   
+ <span class="keyword">typedef</span> 指令用来简化指针函数的写法，这样就可以在接下的结构体定义中，写出清晰的代码。
+</code></pre><p>在看下界面的主体结构体：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> fs_node</div><div class="line">{</div><div class="line">    <span class="keyword">char</span> name[<span class="number">128</span>];     <span class="comment">// 文件名</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> mask;        <span class="comment">// 权限掩码，读写和执行</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> uid;         <span class="comment">// 用户id，user id</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> gid;         <span class="comment">// 组id，group id</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> flags;       <span class="comment">// 文件类型</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> inode;       <span class="comment">//文件id，唯一，用来表示不同的文件</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> length;      <span class="comment">// 文件大小（byte）</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> impl;        <span class="comment">// An implementation-defined number.</span></div><div class="line">    read_type_t read;</div><div class="line">    write_type_t write;</div><div class="line">    open_type_t open;</div><div class="line">    close_type_t close;</div><div class="line">    readdir_type_t readdir;</div><div class="line">    finddir_type_t finddir;</div><div class="line">    <span class="keyword">struct</span> fs_node *ptr; <span class="comment">// 有符号链接时存在</span></div><div class="line">} fs_node_t;</div></pre></td></tr></table></figure>
+
+<p>可以这样初始化一个文件的函数指针：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root_nodes[<span class="keyword">i</span>].<span class="keyword">read</span> = &initrd_read;</div><div class="line">root_nodes[<span class="keyword">i</span>].<span class="keyword">write</span> = &initrd_write;</div></pre></td></tr></table></figure>
+
+<p>统一的函数实现如下，比如读文件：  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">unsigned <span class="keyword">int</span> read_fs(fs_node_t *node, unsigned <span class="keyword">int</span> offset, unsigned <span class="keyword">int</span> <span class="keyword">size</span>, unsigned <span class="keyword">char</span> *buffer)</div><div class="line"><span class="comment">//读取索引节点node的文件数据，读取从offset位置开始，大小为size的数据</span></div><div class="line"><span class="comment">//将他们写到buffer中</span></div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (node-&gt;<span class="keyword">read</span> != <span class="number">0</span>)</div><div class="line">	<span class="comment">//有读函数</span></div><div class="line">        <span class="keyword">return</span> node-&gt;<span class="keyword">read</span>(node, offset, <span class="keyword">size</span>, buffer);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h1 id="initrd">initrd</h1>
+<pre><code>  <span class="title">initrd</span> 的英文含义是 boot loader initialized RAM disk，就是由 boot loader 初始化的内存盘。在 linux内核启动前， boot loader 会将存储介质中的 initrd 文件加载到内存，内核启动时会在访问真正的根文件系统前先访问该内存中的 initrd 文件系统。  
+</code></pre><p>通过一下两个结构管理initrd中的文件。   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> num_files; <span class="comment">// ramdisk中的文件数</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span></div><div class="line"><span class="comment">//文件格式信息</span></div><div class="line">{</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> name[<span class="number">64</span>];  <span class="comment">// 文件名</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> address;   <span class="comment">// 文件在内存中的偏离起始位置的</span></div><div class="line">			   <span class="comment">//的大小，就是文件的地</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> length;   <span class="comment">// 文件的长度</span></div><div class="line">} initrd_file;</div></pre></td></tr></table></figure>
+
+<p>通过address和length，就可以找到文件，完成读写等操作。写操作如下：   </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> write(fs_node_t *node,<span class="keyword">unsigned</span> <span class="keyword">int</span> offset,<span class="keyword">unsigned</span> <span class="keyword">int</span> size,<span class="keyword">unsigned</span> <span class="keyword">char</span> *buffer)</div><div class="line">{</div><div class="line">	initrd_file header = file_headers[node-&gt;inode];</div><div class="line">	<span class="keyword">if</span>(offset&gt;header.length)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(size&gt;<span class="built_in">strlen</span>(buffer))</div><div class="line">		size=<span class="built_in">strlen</span>(buffer);</div><div class="line">	file_headers[node-&gt;inode].length=offset+<span class="built_in">strlen</span>(buffer);</div><div class="line">	root_nodes[node-&gt;inode].length=offset+<span class="built_in">strlen</span>(buffer);</div><div class="line">	<span class="built_in">memcpy</span>((<span class="keyword">unsigned</span> <span class="keyword">char</span>*)(header.offset+offset),buffer,size);</div><div class="line">	<span class="keyword">return</span> size;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+        </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/02/02/2015-2-2-ld/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
+    </article>
+</main>
+
+
+  
+<footer class="site-footer">
+    
+    <div class="inner">
+        <section class="copyright"><a href="/"></a> &copy; Luo's blog 2014</section>
+        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
+    </div>
+</footer>
+</div>
+</div><!-- /scroller -->
+
+</div><!-- /pusher -->
+</div><!-- /container -->
+</div>
+
+<!-- Easter eggs -->
+
+<div class="egg animated">
+    <a id="close-button" href="#">X</a>
+    <div class="block">
+        <div class="loading">
+            <span class="ball1"></span>
+            <span class="ball2"></span>
+        </div>
+    </div>
+</div>
+  
+<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        var script = document.createElement('script');
+        script.src = "/js/jquery.min.js";
+        document.body.appendChild(script);
+    }
+</script>
+<script type="text/javascript" src="/js/lib.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
