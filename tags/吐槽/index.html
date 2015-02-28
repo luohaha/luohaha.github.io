@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>研究下ldscript,lma与vma | Luo&#39;s blog</title>
+  <title>Tag: 吐槽 | Luo&#39;s blog</title>
   <meta name="description" content="分享与积累" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -195,7 +195,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">研究下ldscript,lma与vma</a></li>
+                        <li id="navbar-title"><a href="#">undefined</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -214,69 +214,50 @@
 
 
 <!-- -->
-<!--<body class="post-template">-->
+<!--<body class="home-template">-->
 <!---->
   
-
 <main class="content" role="main">
-    <article class="post" >
-    <span class="post-meta">
-                  <div class="tag-tile">
-                      
-                      
-                      <a data-pjax href='/tags/操作系统/' style='color:#D5D5D5'>操作系统</a>
-                      
-                      
-                  </div>
-                <h1 class="post-title" style="margin: 14px 0;color:#50585D">研究下ldscript,lma与vma</h1>
 
-                    <div class="post-meta">
-                        Post on<span class="fa fa-clock-o"></span>
-                        <time datetime="2015-02-01T16:25:48.000Z"
-                              itemprop="datePublished">2月 2 2015</time>
-                    </div>
-    </span>
+    
+    <article class="post">
 
-        <section class="post-content">
-            <h1 id="ldscript">ldscript</h1>
-<p>ldscipt是gcc下的链接脚本, 顾名思义, 就是告诉别人, 这些代码该怎么链接.<br>链接就是，将多个目标文件合并为一个目标文件，称作可执行文件。<br>每个目标文件都包含一连串的section，最常见，最基础的至少有：<br>.text，代码段，就是CPU要运行的指令代码；<br>.data，数据段，程序中包含的一些数据，放在这个段里；<br>.bss，未初始化段，记录了程序里有哪些未初始化的变量，就相当于只记录对应的名字，留着程序运行前去初始化为0，所以，此处并不占用具体空间。  </p>
-<h3 id="基本格式">基本格式</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">section_name  vma : AT(lma)</div><div class="line">  {</div><div class="line">      output-section-command</div><div class="line">    output-section-command</div><div class="line">     <span class="keyword">...</span></div><div class="line">   } [AT&gt;lma_region]</div></pre></td></tr></table></figure>
+        <header class="post-header">
+            <div class="tag-tile">
+                
+                
+                <a data-pjax href='/tags/吐槽/'>吐槽</a>
+                
+                
+                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
+            </div>
+            <h1 class="post-title"><a data-pjax href="/2015/02/28/2015-2-28-shit/">对个人近况的一些吐槽</a>
+            </h1>
 
-<p>例如:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.<span class="keyword">text</span> <span class="number">0x30000000</span> : AT(<span class="number">0x40000000</span>)</div><div class="line">{</div><div class="line">     *(.<span class="keyword">text</span>)</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>表示的是代码的运行时地址为 0x30000000 。假如你的ROM在 0x0 地址，程序放在ROM中，那个时候程序是不能正常运行的（位置无关代码除外），必须将代码COPY到VMA也就是0x30000000 中才能正常运行。至于那个 AT(lma) 的关键字，只指示代码连接的时候应该放在什么地方，注意好这个英文是 load memory address，是指程序应该装载在什么地方。elf格式的文件里面不但包含了代码，还包含了各种各样的信息，例如上面说的每个段的lma和vma，还有其他信息都包含在里面了。默认状态下，lma 是等于当前的vma的.。但关键字AT指明了LMA。接下来就说说LMA和VMA是何方神圣了。</p>
-<h1 id="VMA">VMA</h1>
-<p>英文解释：<br>VMA（Virtual Memory Address）：the address the section will have when the output file is run;<br>那啥是虚拟内存地址呢？就是你程序运行时，程序所在的地址。<br>此处所谓的虚拟，一般来说，指的是启用了MMU之后，才有了虚拟地址和实地址。<br>此处，我们可以简单的理解为，就是内存的实际地址即可。<br>程序运行前，要把程序的内容，拷贝到对应的内存地址处，然后才能运行的。  </p>
-<h1 id="LMA">LMA</h1>
-<p>英文解释：<br>LMA（Load Memory Address）： the address at which the section will be loaded. 因为我们知道程序运行前要经过：编译，链接，装载，运行等过程。装载到哪呢？没错，就是LMA对应的地址里。</p>
-<h1 id="LMA与VMA的区别">LMA与VMA的区别</h1>
-<p>如果将程序运行比作吃饭，LMA就好比是厨房，食物需要在厨房准备好。VMA好比是餐厅，在餐厅享受食物。<br>大多数情况下，那么LMA和VMA是一样的，也就是，程序被加载到内存的什么地方，也就在什么地方运行。<br>不过也有特例，这里举一个嵌入式的例子，和一个我在写kernel中实际遇到的例子。</p>
-<h3 id="1-_嵌入式的例子">1. 嵌入式的例子</h3>
-<p>因为嵌入式系统中ram内存空间有限，所以一般把程序放在flash中。flash比较于ram写入速度较慢。但flash的空间容量大，所以人们想到将代码放到flash中（因为只读不写），把数据放在ram中，以节约资源。但在运行的时候，代码还是要出现在ram中，怎么办呢？就是将代码段的LMA设置为flash的地址，这样代码就会临时放在flash中，节约资源。等到需要运行的时候，再载入运行地址VMA中。所以这种情况下，VMA不等于LMA。</p>
-<h3 id="2-_自身实际遇到的例子">2. 自身实际遇到的例子</h3>
-<p>因为为了模仿linux的内核运行地址（从线性空间3GB以上地址运行），所以我的内核代码的运行地址也设为3GB，但是我是用GRUB加载内核代码的，GRUB要求的是要在0x100000开始加载。怎么办？就用VMA=3GB，LMA=grub<br>要求的地址。</p>
-
+            <div class="post-meta">
+                Post on<span class="fa fa-clock-o"></span>
+                <time datetime="2015-02-27T23:42:29.000Z"
+                      itemprop="datePublished">2月 28 2015</time>
+            </div>
+        </header>
+        <section class="post-excerpt">
+            <p>
+                
+                这只是一篇吐槽文,没有任何干货
+慎入
+        在2015年的二月份, 对于我而言是非同反响的月份. 在这个月里, 我完成了两件大事. 一是完成了自己一直以来想要完成的简单的操作系统内核. 这个内核很简单, 实用价值不高, 也有很多bug, 但对于我个人来说, 是一次伟大的胜利, 至少我发现, 只要努力, 我还是可以做出一些成绩的. 我是在二月中旬完成的这个任务.   
+        完成了一个任务, 接下来就是另一个任务. 但
+                
+            </p>
+            
         </section>
-        <hr/>
-        <nav class="pagination" style="width:auto" role="pagination">
-            
-            <a data-pjax class="newer-posts" href="/2015/02/05/2015-2-5-vfs/">← Prev Post</a>
-            
-            <a class="share-button" data-original-title title>Share this Post</a>
-            
-            <a data-pjax class="older-posts" href="/2015/01/31/2015-01-31-multiboot/">Next Post →</a>
-            
-        </nav>
-        <br/>
-        <br/>
-        <section id="comment">
-            <div id="comment-box"></div>
-        </section>
-
-
     </article>
+    
+    <nav class="pagination" role="pagination">
+        
+        <span class="page-number">Page 1 of 1</span>
+        
+    </nav>
 </main>
 
 
