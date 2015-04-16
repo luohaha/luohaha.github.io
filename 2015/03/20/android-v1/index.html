@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tag: C语言 | Luo&#39;s blog</title>
+  <title>android-v1 | Luo&#39;s blog</title>
   <meta name="description" content="分享与积累" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -221,7 +221,7 @@
                 
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
+                        <li id="navbar-title"><a href="#">android-v1</a></li>
                         <li id="navbar-toc" style="border-left: none">
                             <a style="padding-right: 15px">
                                 <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
@@ -240,52 +240,99 @@
 
 
 <!-- -->
-<!--<body class="home-template">-->
+<!--<body class="post-template">-->
 <!---->
   
+
 <main class="content" role="main">
+    <article class="post" >
+    <span class="post-meta">
+                  <div class="tag-tile">
+                      
+                      
+                      <a data-pjax href='/tags/android/' style='color:#D5D5D5'>android</a>
+                      
+                      
+                  </div>
+                <h1 class="post-title" style="margin: 14px 0;color:#50585D">android-v1</h1>
 
-    
-    <article class="post">
+                    <div class="post-meta">
+                        Post on<span class="fa fa-clock-o"></span>
+                        <time datetime="2015-03-20T01:42:48.000Z"
+                              itemprop="datePublished">3月 20 2015</time>
+                    </div>
+    </span>
 
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/C语言/'>C语言</a>
-                
-                <a data-pjax href='/tags/操作系统/'>操作系统</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2015/02/05/2015-2-5-vfs/">简单的vfs实现和读取initrd中的文件</a>
-            </h1>
+        <section class="post-content">
+            <h1 id="android知识汇总">android知识汇总</h1>
+<pre><code>   由于项目的需要，重拾android开发。想当初几年前，通过android开发逐渐喜欢上编程，辗转周折，现在又重新回到android的战场，不得不感慨技术变化太快，得重新好好学起了。
+</code></pre><h2 id="系统知识：">系统知识：</h2>
+<pre><code>    1.android操作系统是一个多用户的linux操作系统，其中每一个app是不同的用户。
+    2.系统会给每一个app一个独一无二的linux用户ID，ID由系统统一管理，对于app是透明的。系统通过ID对app设置权限，使得其只能访问对应的文件。
+    3.系统中每一个进程拥有自己的虚拟机，所以app可以独立地执行自己的代码。
+    4.系统是建立在最小优先级的原则上的，app不能访问到系统的其他地方。
+    5.两个app之间可以共享linux用户ID，这样就可以共享文件，进程，虚拟机等，当然他们也必须要有相同的签名。
+    6.app想要获取其他的权限需要在管理文件中写明，安装时会告知用户。
+</code></pre><h2 id="app部件">app部件</h2>
+<h3 id="Activities">Activities</h3>
+<pre><code>     activities代表了一个简单的用户界面。不同的界面之间是独立的个体，他们通过<span class="function">setContentView</span>(view)来放置UI，<span class="function">onCreate</span>(Bundle)可以初始化activity，<span class="function">onPause</span>()可以用来处理用户离开activity时的动作。
+</code></pre><h4 id="Fragment">Fragment</h4>
+<pre><code>     fragment可以用于绑定在activity中，fragment有自己的生命周期，但是必须依附于activity的生命周期（可以理解成寄生的关系）。
+</code></pre><h4 id="activity的状态">activity的状态</h4>
+<pre><code>     <span class="number">1.</span>Running
+            位于屏幕最前端，可见状态。
+     <span class="number">2.</span>Paused
+            当被另一个透明或非全屏的activity覆盖时，可能是可见的，但是不可操作。
+     <span class="number">3.</span><span class="keyword">Stop</span>
+            当被另一个activity完全覆盖，界面不可见时处于<span class="keyword">stop</span>状态。
+     <span class="number">4.</span>KILLED
+            被杀死或没有启动。
+     activity的生命周期如下：
+</code></pre><p><img src="http://android.yaohuiji.com/wp-content/uploads/2010/07/activity_lifecycle.jpg" alt=""></p>
+<pre><code>     activity栈，android通过activity栈的方式来管理activity。
+     正在运行的Activity 处在在栈的最顶端，它是运行状态的;
+     当有新Activity进入屏幕最上端时，原来的Activity就会被压入第二层，如果他的屏幕没有被完全遮盖，那么他处   于Pause状态，如果他被遮盖那么他处于Stop状态。当然不管你出于任何一层，都可能在系统觉得资源不足时被强行关闭，当然关闭时在栈底的程序最先被关闭。譬如：当你在程序中调用 Activity.<span class="keyword">finish</span>()方法时，结果和用户按下 BACK 键一样：他告诉 Activity Manager该Activity实例可以被“回收”。随后 Activity Manager 激活处于栈第二层的 Activity 并重新入栈，把原 Activity 压入到栈的第二层，从 Running 状态转到 Paused 状态。
+</code></pre><p><img src="http://android.yaohuiji.com/wp-content/uploads/2010/07/image20.png" alt="">        </p>
+<h3 id="Intent">Intent</h3>
+<pre><code>     Intent就是意图的意思。分为两种：显式和隐式。
+     1.显式。
+     直接指定需要打开的activity对应的类。
+     可以有以下的三种实现方式：
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, SecondActivity.<span class="keyword">class</span>);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
 
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2015-02-05T08:16:06.000Z"
-                      itemprop="datePublished">2月 5 2015</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                VFS
- 因为在一个操作系统中不单只有一种文件系统，要使操作系统能够支持不同的文件系统，让他们能够友好共存，这就是VFS（Virtaul Filesystem Switch）的使命。VFS将对各种不同文件系统的管理和操作纳入到一个统一的框架中，使得用户程序可以通过同一个文件系统调用，对各种不同的文件系统和文件进行操作，而无需关心文件属于什么文件系统。  
-接下来看看具体实现：  
-12345678910//定义指向函数的指针，对应不同的
-                
-            </p>
-            
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ComponentName componentName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>, SecondActivity.class);</div><div class="line"><span class="regexp">//</span> 或者ComponentName componentName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>, <span class="string">"com.example.app016.SecondActivity"</span>);</div><div class="line"><span class="regexp">//</span> 或者ComponentName componentName = <span class="keyword">new</span> ComponentName(<span class="keyword">this</span>.getPackageName(), <span class="string">"com.example.app016.SecondActivity"</span>);</div><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setComponent(componentName);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setClass(<span class="keyword">this</span>, SecondActivity.class);</div><div class="line"><span class="regexp">//</span> 或者intent.setClassName(<span class="keyword">this</span>, <span class="string">"com.example.app016.SecondActivity"</span>);</div><div class="line"><span class="regexp">//</span> 或者intent.setClassName(<span class="keyword">this</span>.getPackageName(), <span class="string">"com.example.app016.SecondActivity"</span>);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+
+<pre><code>     以上多种方式都是一样的，实际上都是设置Component直接指定Activity类的显式Intent，由MainActivity跳转到SecondActivity。
+
+     <span class="number">2</span>.隐式。
+     隐式，即不是像显式的那样直接指定需要调用的Activity，隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。筛选是根据所有的&lt;intent-<span class="built_in">filter</span>&gt;来筛选。
+</code></pre><p><strong>其实Intent是一个用于在不同的app原件之间传递消息的对象，可以用来请求动作，主要有一下三种常用情形：</strong><br><strong>1.开始一个activity</strong><br>     可以通过给startActivity()传递Intent开始一个activity（可以附带消息）， 当需要接受一个finish的activity的返回消息时，可以调用onActivityForResult()。<br><strong>2.开始一个service</strong><br>     可以通过startService（）开始一个后台服务。<br><strong>3.传递一个广播</strong></p>
+
         </section>
+        <hr/>
+        <nav class="pagination" style="width:auto" role="pagination">
+            
+            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            
+            <a class="share-button" data-original-title title>Share this Post</a>
+            
+            <a data-pjax class="older-posts" href="/2015/03/05/2015-3-5-文法/">Next Post →</a>
+            
+        </nav>
+        <br/>
+        <br/>
+        <section id="comment">
+            <div id="comment-box"></div>
+        </section>
+
+
     </article>
-    
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
 </main>
 
 
