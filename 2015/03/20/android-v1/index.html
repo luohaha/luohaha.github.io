@@ -43,6 +43,10 @@
                                 <div class="mp-scroll">
                                 
                                 <li class="search-archive-li mp-pjax">
+                                    <a href="/2015/04/16/2015-4-16-android-layout/">2015-4-16-android-layout</a>
+                                </li>
+                                
+                                <li class="search-archive-li mp-pjax">
                                     <a href="/2015/03/20/android-v1/">android-v1</a>
                                 </li>
                                 
@@ -163,7 +167,7 @@
                     </li>
                     
                     <li class="mp-pjax"><a class="fa fa-user"  href="Mailto:965166527@qq.com">&nbsp;&nbsp;&nbsp;contact me</a></li>
-                  <!--  <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>  -->
+                    <li><a class="fa fa-github" href="https://github.com/luohaha">&nbsp;&nbsp;&nbsp;Github</a></li>  
 		    <li><a class="" href="http://becool.sinaapp.com">football news</a></li>
 
                 </ul>
@@ -172,6 +176,8 @@
         </nav>
         <div id="pjax">
             <div class="pjax-hidden" style="display: none">
+                
+                    <a  data-pjax href="/2015/04/16/2015-4-16-android-layout/">2015-4-16-android-layout</a>
                 
                     <a  data-pjax href="/2015/03/20/android-v1/">android-v1</a>
                 
@@ -311,14 +317,14 @@
 <pre><code>     以上多种方式都是一样的，实际上都是设置Component直接指定Activity类的显式Intent，由MainActivity跳转到SecondActivity。
 
      <span class="number">2</span>.隐式。
-     隐式，即不是像显式的那样直接指定需要调用的Activity，隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。筛选是根据所有的&lt;intent-<span class="built_in">filter</span>&gt;来筛选。
-</code></pre><p><strong>其实Intent是一个用于在不同的app原件之间传递消息的对象，可以用来请求动作，主要有一下三种常用情形：</strong><br><strong>1.开始一个activity</strong><br>     可以通过给startActivity()传递Intent开始一个activity（可以附带消息）， 当需要接受一个finish的activity的返回消息时，可以调用onActivityForResult()。<br><strong>2.开始一个service</strong><br>     可以通过startService（）开始一个后台服务。<br><strong>3.传递一个广播</strong></p>
+     隐式，即不是像显式的那样直接指定需要调用的Activity，隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。筛选是根据所有的&lt;intent-<span class="built_in">filter</span>&gt;来筛选。例如，如果你要展示给用户一个在地图上的确定位置，你可以使用一个隐式的Intent来打开你手机上的具有地图功能的app。
+</code></pre><p><strong>其实Intent是一个用于在不同的app原件之间传递消息的对象，可以用来请求动作，主要有一下三种常用情形：</strong><br><strong>1.开始一个activity</strong><br>     可以通过给startActivity()传递Intent开始一个activity（可以附带消息）， 当需要接受一个finish的activity的返回消息时，可以调用onActivityForResult()。<br><strong>2.开始一个service</strong><br>     可以通过startService（）开始一个后台服务。<br><strong>3.推送一个广播</strong><br>     广播是一个可以被所有的app接受到的消息，可以通过传递Intent给sendBroadcast()，sendOrderedBroadcast()和sendStickyBroadcast()。</p>
 
         </section>
         <hr/>
         <nav class="pagination" style="width:auto" role="pagination">
             
-            <a style="cursor:default" class="newer-posts" href="#">This is the First Post</a>
+            <a data-pjax class="newer-posts" href="/2015/04/16/2015-4-16-android-layout/">← Prev Post</a>
             
             <a class="share-button" data-original-title title>Share this Post</a>
             
