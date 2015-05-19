@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Luo&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: ANSI Common Lisp exercises: Chapter 2date: 2015-05-19 10:32:29tags: Lisp
+categories: code
+因为最近在学习lisp，使用的教程是网上的《ANSI Common Lisp 中文版》，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。
+ANSI Common">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Luo's blog">
+<meta property="og:url" content="http://yoursite.com/2015/05/19/2015-5-19-lisp-exesice2/">
+<meta property="og:site_name" content="Luo's blog">
+<meta property="og:description" content="title: ANSI Common Lisp exercises: Chapter 2date: 2015-05-19 10:32:29tags: Lisp
+categories: code
+因为最近在学习lisp，使用的教程是网上的《ANSI Common Lisp 中文版》，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。
+ANSI Common">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Luo's blog">
+<meta name="twitter:description" content="title: ANSI Common Lisp exercises: Chapter 2date: 2015-05-19 10:32:29tags: Lisp
+categories: code
+因为最近在学习lisp，使用的教程是网上的《ANSI Common Lisp 中文版》，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。
+ANSI Common">
+
+  
+  
+    <link rel="icon" href="http://203club.com/wp-content/uploads/2015/05/20150517043559248_easyicon_net_305-300x300.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(http://203club.com/wp-content/uploads/2015/05/20150517043559248_easyicon_net_305-300x300.png); }
+    </style>
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">用心做事，滴水穿石</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/2015/05/17/2015-5-17-md/">About</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="http://becool.sinaapp.com">足球资讯网</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header">未分类</h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-2015-5-19-lisp-exesice2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+      <p class="article-byline">
+        <a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="article-date">
+  <time datetime="2015-05-19T08:06:38.000Z" itemprop="datePublished">5月 19 2015</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>title: ANSI Common Lisp exercises: Chapter 2<br>date: 2015-05-19 10:32:29<br>tags: Lisp</p>
+<h2 id="categories:_code">categories: code</h2>
+<p>因为最近在学习lisp，使用的教程是网上的<a href="http://acl.readthedocs.org/en/latest/index.html" target="_blank" rel="external">《ANSI Common Lisp 中文版》</a>，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。</p>
+<h3 id="ANSI_Common_Lisp_exercises:_Chapter_2">ANSI Common Lisp exercises: Chapter 2</h3>
+<p>1.这一题比较简单，具体的答案是：<br>（a）14 。<br>（b）（1 5），因为这里是作为列表打印出来的，所以（+ 2 3）是运算后的结果。<br>（c）这里是一个判断语句，（listp 1）判断1是不是列表，因为1不是列表，所以把后一个打印出来，也就是7。<br>（d）这里先来看list中的第一个，它是一个与运算，和上题一样，listp判断3是不是列表，答案当然不是，所以and运算结果为NIL。第二个（+ 1 2）结果为3。所以最后的答案为（NIL 3）。</p>
+<p>2.这里首先来看，cons可以用来构造列表，要表示（a b c）的话，可以有很多种玩法。但是要注意cons只能接受两个参数，比如我刚才想<code>&gt;（cons &#39;a &#39;b &#39;c）</code>是不行的。我想到的有这三个：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;(cons 'a '(b c))</div><div class="line">&gt;(cons 'a (cons 'b (cons 'c nil)))</div><div class="line">&gt;(cons 'a (list 'b 'c))</div></pre></td></tr></table></figure>
+
+<p>这里还要注意一个问题，cons是将第一个参数加上第二个参数，所以两个参数的位置不能弄反，否则，会输不出想要的结果。</p>
+<p>3.需要返回第四个元素，而car运算返回第一个，cdr返回其余的。我的答案是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> get-four <span class="list">(<span class="title">lst</span>)</span></span></div><div class="line">   <span class="list">(<span class="title">car</span> <span class="list">(<span class="title">cdr</span> <span class="list">(<span class="title">cdr</span> <span class="list">(<span class="title">cdr</span> lst)</span>)</span>)</span>)</span>)</div></pre></td></tr></table></figure>
+
+<p>这里如果给的参数中，不够四个，则返回NIL。</p>
+<p>4.我的答案如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> bigger <span class="list">(<span class="title">a</span> b)</span></span></div><div class="line">   <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title"><span class="built_in">&gt;</span></span> a b)</span></span></div><div class="line">     a b))</div></pre></td></tr></table></figure>
+
+<p>5.（a）题目：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> enigma <span class="list">(<span class="title">x</span>)</span></span></div><div class="line">      <span class="list">(<span class="title"><span class="built_in">and</span></span> <span class="list">(<span class="title"><span class="built_in">not</span></span> <span class="list">(<span class="title">null</span> x)</span>)</span></span></div><div class="line">           <span class="list">(<span class="title"><span class="built_in">or</span></span> <span class="list">(<span class="title">null</span> <span class="list">(<span class="title">car</span> x)</span>)</span></span></div><div class="line">               <span class="list">(<span class="title">enigma</span> <span class="list">(<span class="title">cdr</span> x)</span>)</span>)))</div></pre></td></tr></table></figure>
+
+<p>首先观察一下，这是个递归的函数。先看and的第一个参数，（null x）当x为nil时，返回真，not取反，所以总的来说就是不空就返回真。and的第二个参数，是一个或运算，（null (car x)）的意思是当列表x的第一个数为nil时，返回真，然后是一个递归调用，此时调用时的列表去掉头元素。<br>这个逻辑比较绕，可以这么看，只要x不为nil，与运算取得正值的第一条件符合，但是第二个条件中包含一个递归，每一次递归列表都会减少一个，如果先不考虑或运算，那么第二个条件是恒为nil的，也就是说最终结果为nil。但是或运算的存在使得我们可以跳出这个怪圈。只要列表的第一个元素为nil，那么或运算就可以取得T。从而使整体为T。<br>这个函数是判断列表中是否存在nil元素，但又不是只有一个nil元素而已。</p>
+<p>（b）题目：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> mystery <span class="list">(<span class="title">x</span> y)</span></span></div><div class="line">      <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">null</span> y)</span></span></div><div class="line">          <span class="literal">nil</span></div><div class="line">          <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">eql</span> <span class="list">(<span class="title">car</span> y)</span> x)</span><span class="number"></span></span></div><div class="line">              0</div><div class="line">              <span class="list">(<span class="title"><span class="built_in">let</span></span> <span class="list">(<span class="list">(<span class="title">z</span> <span class="list">(<span class="title">mystery</span> x <span class="list">(<span class="title">cdr</span> y)</span>)</span>)</span>)</span></span></div><div class="line">                <span class="list">(<span class="title"><span class="built_in">and</span></span> z <span class="list">(<span class="title"><span class="built_in">+</span></span> z<span class="number"> 1</span>)</span>)</span>))))</div></pre></td></tr></table></figure>
+
+<p>这个比上一个要简单不少，从if (eql (car y) x)就可以看出，只是一个列表元素查找比较的这么一个运算，and z (+ z 1)返回后一个，也就是说，判断x的元素在y中存在，则返回位置，位置从0开始。如果x包含超过一个元素，或者x在y中不存在，则返回nil。</p>
+<p>6.（a）这个比较简单，使用car就可以。<br>  （b）这个有点意思，因为很明显（/ 1 0）是除零操作是要报错的，只有使用or的时候当第一个元素为T，就没有必要去判断第二个元素了。<br>  （c）这里调用函数的话有两种选择，apply和funcall，apply最后一个实参当成列表，就可以把nil省去了。</p>
+<p>7.我的解答如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> own-list <span class="list">(<span class="title">lst</span>)</span></span></div><div class="line">   <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">null</span> lst)</span></span></div><div class="line">       <span class="literal">nil</span></div><div class="line">       <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">listp</span> <span class="list">(<span class="title">car</span> lst)</span>)</span></span></div><div class="line">            T</div><div class="line">            <span class="list">(<span class="title">is-list</span> <span class="list">(<span class="title">cdr</span> lst)</span>)</span>)))</div></pre></td></tr></table></figure>
+
+<p>8.（a）<br>这道题没看懂问的啥，什么叫数字数量的点，懂的小伙伴求教。。<br>（b）<br>递归：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> counta <span class="list">(<span class="title">x</span> lst)</span></span></div><div class="line">   <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">null</span> lst)</span><span class="number"></span></span></div><div class="line">       0</div><div class="line">       <span class="list">(<span class="list">(<span class="title"><span class="built_in">let</span></span> <span class="list">(<span class="list">(<span class="title">z</span> counta <span class="list">(<span class="title">x</span> <span class="list">(<span class="title">cdr</span> lst)</span>)</span>)</span>)</span></span></span></div><div class="line">             <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">eql</span> <span class="list">(<span class="title">car</span> lst)</span> x)</span></span></div><div class="line">                 <span class="list">(<span class="title"><span class="built_in">+</span></span> z<span class="number"> 1</span>)</span>)</div><div class="line">             z))))</div></pre></td></tr></table></figure>
+
+<p>迭代：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="list">(<span class="title">defun</span> counta <span class="list">(<span class="title">x</span> lst)</span></span></div><div class="line">   <span class="list">(<span class="title"><span class="built_in">let</span></span> <span class="list">(<span class="list">(<span class="title">z</span><span class="number"> 0</span>)</span>)</span></span></div><div class="line">       <span class="list">(<span class="title">dolist</span> <span class="list">(<span class="title">obj</span> lst)</span></span></div><div class="line">           <span class="list">(<span class="title"><span class="built_in">if</span></span> <span class="list">(<span class="title">eql</span> obj x)</span></span></div><div class="line">               <span class="list">(<span class="title">setf</span> z <span class="list">(<span class="title"><span class="built_in">+</span></span> z<span class="number"> 1</span>)</span>)</span>))</div><div class="line">       z))</div></pre></td></tr></table></figure>
+
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://yoursite.com/2015/05/19/2015-5-19-lisp-exesice2/" data-id="culyh1132ixa95at" class="article-share-link">分享到</a>
+        
+          <a href="http://yoursite.com/2015/05/19/2015-5-19-lisp-exesice2/#comments" class="article-comment-link">评论</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/luohaha" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="/" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/05/17/2015-5-17-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">2015-5-17.md</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"></p>
+              <p class="item-title"><a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="title"></a></p>
+              <p class="item-date"><time datetime="2015-05-19T08:06:38.000Z" itemprop="datePublished">5月 19 2015</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/05/17/2015-5-17-md/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+              <p class="item-title"><a href="/2015/05/17/2015-5-17-md/" class="title">2015-5-17.md</a></p>
+              <p class="item-date"><time datetime="2015-05-17T09:47:51.000Z" itemprop="datePublished">5月 17 2015</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/04/26/2015-4-26-multipeople-chatroom-p1/" class="thumbnail">
+  
+    <span style="background-image:url(http://203club.com/wp-content/uploads/2015/04/nodejs1.png
+)" alt="新技能get，用javascript快速写出html5端的多人聊天室应用（一）" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+              <p class="item-title"><a href="/2015/04/26/2015-4-26-multipeople-chatroom-p1/" class="title">新技能get，用javascript快速写出html5端的多人聊天室应用（一）</a></p>
+              <p class="item-date"><time datetime="2015-04-26T12:31:14.000Z" itemprop="datePublished">4月 26 2015</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/02/05/2015-2-5-vfs/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+              <p class="item-title"><a href="/2015/02/05/2015-2-5-vfs/" class="title">简单的vfs实现和读取initrd中的文件</a></p>
+              <p class="item-date"><time datetime="2015-02-05T08:16:06.000Z" itemprop="datePublished">2月 5 2015</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/02/02/2015-2-2-ld/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+              <p class="item-title"><a href="/2015/02/02/2015-2-2-ld/" class="title">研究下ldscript,lma与vma</a></p>
+              <p class="item-date"><time datetime="2015-02-01T16:25:48.000Z" itemprop="datePublished">2月 2 2015</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a><span class="tag-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C语言/" style="font-size: 15.00px;">C语言</a><a href="/tags/android/" style="font-size: 10.00px;">android</a><a href="/tags/html5/" style="font-size: 15.00px;">html5</a><a href="/tags/java/" style="font-size: 15.00px;">java</a><a href="/tags/javascript/" style="font-size: 15.00px;">javascript</a><a href="/tags/nodejs/" style="font-size: 15.00px;">nodejs</a><a href="/tags/吐槽/" style="font-size: 10.00px;">吐槽</a><a href="/tags/感悟/" style="font-size: 15.00px;">感悟</a><a href="/tags/操作系统/" style="font-size: 20.00px;">操作系统</a><a href="/tags/编译原理/" style="font-size: 10.00px;">编译原理</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://coolshell.cn/">Coolshell</a>
+          </li>
+        
+          <li>
+            <a href="http://www.ruanyifeng.com/blog/">阮一峰博客</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.csdn.net/guolin_blog/">郭霖的专栏</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2015 Yixin Luo</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'luohahagithub';
+  
+  var disqus_url = 'http://yoursite.com/2015/05/19/2015-5-19-lisp-exesice2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
