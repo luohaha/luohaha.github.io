@@ -17,6 +17,7 @@ ANSI Common">
 categories: code
 因为最近在学习lisp，使用的教程是网上的《ANSI Common Lisp 中文版》，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。
 ANSI Common">
+<meta property="og:image" content="http://img3.douban.com/lpic/s10385963.jpg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luo's blog">
 <meta name="twitter:description" content="title: ANSI Common Lisp exercises: Chapter 2date: 2015-05-19 10:32:29tags: Lisp
@@ -112,13 +113,13 @@ ANSI Common">
       
       <p class="article-byline">
         <a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="article-date">
-  <time datetime="2015-05-19T08:06:38.000Z" itemprop="datePublished">5月 19 2015</time>
+  <time datetime="2015-05-19T08:12:30.000Z" itemprop="datePublished">5月 19 2015</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
         <p>title: ANSI Common Lisp exercises: Chapter 2<br>date: 2015-05-19 10:32:29<br>tags: Lisp</p>
 <h2 id="categories:_code">categories: code</h2>
-<p>因为最近在学习lisp，使用的教程是网上的<a href="http://acl.readthedocs.org/en/latest/index.html" target="_blank" rel="external">《ANSI Common Lisp 中文版》</a>，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。</p>
+<p><img src="http://img3.douban.com/lpic/s10385963.jpg" alt=""><br>因为最近在学习lisp，使用的教程是网上的<a href="http://acl.readthedocs.org/en/latest/index.html" target="_blank" rel="external">《ANSI Common Lisp 中文版》</a>，对应每张后面都会有一些习题，我在学完每章后，都会把自己的答案粘上来，希望能和大家一起讨论学习。</p>
 <h3 id="ANSI_Common_Lisp_exercises:_Chapter_2">ANSI Common Lisp exercises: Chapter 2</h3>
 <p>1.这一题比较简单，具体的答案是：<br>（a）14 。<br>（b）（1 5），因为这里是作为列表打印出来的，所以（+ 2 3）是运算后的结果。<br>（c）这里是一个判断语句，（listp 1）判断1是不是列表，因为1不是列表，所以把后一个打印出来，也就是7。<br>（d）这里先来看list中的第一个，它是一个与运算，和上题一样，listp判断3是不是列表，答案当然不是，所以and运算结果为NIL。第二个（+ 1 2）结果为3。所以最后的答案为（NIL 3）。</p>
 <p>2.这里首先来看，cons可以用来构造列表，要表示（a b c）的话，可以有很多种玩法。但是要注意cons只能接受两个参数，比如我刚才想<code>&gt;（cons &#39;a &#39;b &#39;c）</code>是不行的。我想到的有这三个：</p>
@@ -213,7 +214,8 @@ ANSI Common">
               
 <a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="thumbnail">
   
-    <span class="thumbnail-image thumbnail-none"></span>
+    <span style="background-image:url(http://img3.douban.com/lpic/s10385963.jpg
+)" alt="" class="thumbnail-image"></span>
   
 </a>
 
@@ -222,7 +224,7 @@ ANSI Common">
             <div class="item-inner">
               <p class="item-category"></p>
               <p class="item-title"><a href="/2015/05/19/2015-5-19-lisp-exesice2/" class="title"></a></p>
-              <p class="item-date"><time datetime="2015-05-19T08:06:38.000Z" itemprop="datePublished">5月 19 2015</time></p>
+              <p class="item-date"><time datetime="2015-05-19T08:12:30.000Z" itemprop="datePublished">5月 19 2015</time></p>
             </div>
           </li>
         
